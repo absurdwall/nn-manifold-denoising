@@ -33,6 +33,7 @@ class DatasetProperties:
     train_ratio: float = 0.8     # Training data fraction
     centralize: bool = True      # Whether data was centralized
     rescale: bool = True         # Whether data was rescaled
+    apply_rotation: bool = True  # Whether random rotation was applied
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary for JSON serialization."""
@@ -61,22 +62,48 @@ class NormalizationInfo:
     """
     data_mean: np.ndarray         # Mean vector (if centralized)
     normalization_factor: float  # Scaling factor (if rescaled)
+    rotation_matrix: np.ndarray   # Rotation matrix (if rotated)
     centralize_applied: bool      # Whether centralization was applied
     rescale_applied: bool         # Whether rescaling was applied
+    rotation_applied: bool        # Whether rotation was applied
     original_diameter: float      # Diameter before normalization
     final_diameter: float         # Diameter after normalization
     
     def to_dict(self) -> Dict[str, Any]:
         """Convert to dictionary for JSON serialization."""
-        from ..utils.data_utils import handle_types
+        try:
+            from ..utils.data_utils import handle_types
+        except ImportError:
+            from utils.data_utils import handle_types
         return handle_types(asdict(self))
+    
+    def to_summary_dict(self) -> Dict[str, Any]:
+        """Convert to dictionary for metadata, excluding large arrays."""
+        summary = {
+            'centralize_applied': self.centralize_applied,
+            'rescale_applied': self.rescale_applied,
+            'rotation_applied': self.rotation_applied,
+            'normalization_factor': self.normalization_factor,
+            'original_diameter': self.original_diameter,
+            'final_diameter': self.final_diameter
+        }
+        
+        # Include shape information instead of full arrays
+        if self.data_mean is not None:
+            summary['data_mean_shape'] = list(self.data_mean.shape)
+        if self.rotation_matrix is not None:
+            summary['rotation_matrix_shape'] = list(self.rotation_matrix.shape)
+            
+        return summary
     
     @classmethod
     def from_dict(cls, data: Dict[str, Any]) -> 'NormalizationInfo':
         """Create from dictionary."""
-        # Convert data_mean back to numpy array if it's a list
+        # Convert arrays back to numpy arrays if they're lists
         if 'data_mean' in data and isinstance(data['data_mean'], list):
             data['data_mean'] = np.array(data['data_mean'])
+        if 'rotation_matrix' in data and isinstance(data['rotation_matrix'], list):
+            data['rotation_matrix'] = np.array(data['rotation_matrix'])
         return cls(**data)
 
 
@@ -118,7 +145,10 @@ class Dataset:
         if self.clean_embedded is None or self.noisy_embedded is None:
             raise ValueError("Both clean and noisy data must be set before creating train/test split")
         
-        from ..utils.data_utils import create_train_test_split
+        try:
+            from ..utils.data_utils import create_train_test_split
+        except ImportError:
+            from utils.data_utils import create_train_test_split
         
         seed = random_seed if random_seed is not None else self.properties.random_seed
         self.train_test_data = create_train_test_split(
@@ -148,22 +178,25 @@ class Dataset:
         if self.intrinsic_coords is not None:
             summary['data_shapes']['intrinsic_coords'] = list(self.intrinsic_coords.shape)
             
-        # Add normalization info
+        # Add normalization info (summary only, no large arrays)
         if self.normalization_info is not None:
-            summary['normalization_info'] = self.normalization_info.to_dict()
+            summary['normalization_info'] = self.normalization_info.to_summary_dict()
             
         return summary
     
     def save_to_directory(self, output_dir: str) -> Dict[str, str]:
         """
         Save dataset to directory with standardized file structure.
+        Creates a subfolder for each dataset to keep things organized.
         
         Returns:
             Dictionary mapping data type to saved file path
         """
-        os.makedirs(output_dir, exist_ok=True)
+        # Create a subfolder for this specific dataset
+        dataset_dir = os.path.join(output_dir, f"dataset{self.properties.dataset_num}")
+        os.makedirs(dataset_dir, exist_ok=True)
         
-        prefix = os.path.join(output_dir, f"dataset{self.properties.dataset_num}")
+        prefix = os.path.join(dataset_dir, f"dataset{self.properties.dataset_num}")
         saved_files = {}
         
         # Save data arrays
@@ -193,6 +226,11 @@ class Dataset:
                 path = f"{prefix}_data_mean.npy"
                 np.save(path, self.normalization_info.data_mean)
                 saved_files['data_mean'] = path
+            
+            if self.normalization_info.rotation_applied:
+                path = f"{prefix}_rotation_matrix.npy"
+                np.save(path, self.normalization_info.rotation_matrix)
+                saved_files['rotation_matrix'] = path
                 
         # Save metadata
         metadata = {
@@ -201,19 +239,34 @@ class Dataset:
             'files_created': saved_files
         }
         
-        from ..utils.data_utils import save_json
+        try:
+            from ..utils.data_utils import save_json
+        except ImportError:
+            from utils.data_utils import save_json
         metadata_path = f"{prefix}_metadata.json"
         save_json(metadata, metadata_path)
         saved_files['metadata'] = metadata_path
         
         # Save train/test split if it exists
         if self.train_test_data is not None:
-            split_files = {}
-            for split_name, split_data in self.train_test_data.items():
-                path = f"{prefix}_{split_name}.npy"
-                np.save(path, split_data)
-                split_files[split_name] = path
-            saved_files.update(split_files)
+            try:
+                import torch
+                split_files = {}
+                for split_name, split_data in self.train_test_data.items():
+                    path = f"{prefix}_{split_name}.pt"
+                    # Convert to PyTorch tensor and save
+                    tensor_data = torch.from_numpy(split_data).float()
+                    torch.save(tensor_data, path)
+                    split_files[split_name] = path
+                saved_files.update(split_files)
+            except ImportError:
+                # Fall back to numpy if torch not available
+                split_files = {}
+                for split_name, split_data in self.train_test_data.items():
+                    path = f"{prefix}_{split_name}.npy"
+                    np.save(path, split_data)
+                    split_files[split_name] = path
+                saved_files.update(split_files)
             
         return saved_files
     
@@ -221,7 +274,10 @@ class Dataset:
     def load_from_directory(cls, dataset_path: str) -> 'Dataset':
         """Load dataset from directory."""
         # Load metadata first
-        from ..utils.data_utils import load_json
+        try:
+            from ..utils.data_utils import load_json
+        except ImportError:
+            from utils.data_utils import load_json
         metadata = load_json(f"{dataset_path}_metadata.json")
         
         # Create dataset with properties

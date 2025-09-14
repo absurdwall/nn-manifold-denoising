@@ -12,9 +12,16 @@ from datetime import datetime
 from typing import List, Dict, Optional, Any
 from itertools import product
 
-from .manifold_generator import generate_manifold_embedding, apply_normalization, add_noise
-from .dataset_classes import Dataset, DatasetProperties, NormalizationInfo
-from ..utils.data_utils import save_json
+try:
+    # Try relative imports first (when imported as module)
+    from .manifold_generator import generate_manifold_embedding, apply_normalization, add_noise
+    from .dataset_classes import Dataset, DatasetProperties, NormalizationInfo
+    from ..utils.data_utils import save_json
+except ImportError:
+    # Fall back to absolute imports (when run as script)
+    from data_generation.manifold_generator import generate_manifold_embedding, apply_normalization, add_noise
+    from data_generation.dataset_classes import Dataset, DatasetProperties, NormalizationInfo
+    from utils.data_utils import save_json
 
 
 class DatasetGenerator:
@@ -33,7 +40,7 @@ class DatasetGenerator:
         if experiment_id is None:
             # Auto-generate experiment ID based on current date/time
             now = datetime.now()
-            experiment_id = f"tb{now.year-2000:02d}{now.month:02d}{now.day:02d}{now.hour:02d}"
+            experiment_id = f"data_{now.year-2000:02d}{now.month:02d}{now.day:02d}_{now.hour:02d}{now.minute:02d}"
         
         self.experiment_id = experiment_id
         self.base_output_dir = base_output_dir
@@ -52,7 +59,8 @@ class DatasetGenerator:
                               Ds: List[int], kernel_smoothness: List[float],
                               noise_sigma: float, base_type: str = 'unit_ball',
                               train_ratio: float = 0.8, centralize: bool = True,
-                              rescale: bool = True, random_seed: int = 42) -> List[DatasetProperties]:
+                              rescale: bool = True, apply_rotation: bool = True,
+                              random_seed: int = 42) -> List[DatasetProperties]:
         """
         Generate a grid of dataset properties for systematic experiments.
         
@@ -67,6 +75,7 @@ class DatasetGenerator:
             train_ratio: Training data fraction
             centralize: Whether to centralize data
             rescale: Whether to rescale data
+            apply_rotation: Whether to apply random rotation
             random_seed: Base random seed
             
         Returns:
@@ -86,7 +95,8 @@ class DatasetGenerator:
                 random_seed=random_seed + dataset_num,
                 train_ratio=train_ratio,
                 centralize=centralize,
-                rescale=rescale
+                rescale=rescale,
+                apply_rotation=apply_rotation
             )
             properties_list.append(props)
             dataset_num += 1
@@ -115,6 +125,7 @@ class DatasetGenerator:
         start_time = time.time()
         
         # 1. Generate raw manifold embedding
+        manifold_start = time.time()
         raw_embedded, intrinsic_coords = generate_manifold_embedding(
             k=properties.k,
             N=properties.N,
@@ -123,24 +134,32 @@ class DatasetGenerator:
             kernel_smoothness=properties.kernel_smoothness,
             base_type=properties.base_type,
             random_seed=properties.random_seed,
-            verbose=False  # Suppress detailed output for cleaner logs
+            verbose=verbose  # Pass through verbose flag
         )
+        manifold_time = time.time() - manifold_start
         
         if verbose:
-            print(f"  ✓ Raw generation: {raw_embedded.shape}")
+            print(f"  ✓ Raw generation: {raw_embedded.shape} in {manifold_time:.2f}s")
         
         # 2. Apply normalization
+        norm_start = time.time()
         clean_embedded, norm_info_dict = apply_normalization(
             raw_embedded,
             centralize=properties.centralize,
             rescale=properties.rescale,
+            apply_rotation=properties.apply_rotation,
+            random_seed=properties.random_seed + 2000,  # Different seed for rotation
             verbose=verbose
         )
+        norm_time = time.time() - norm_start
+        
+        norm_time = time.time() - norm_start
         
         # Convert normalization info to proper dataclass
         normalization_info = NormalizationInfo(**norm_info_dict)
         
         # 3. Add noise to create noisy version
+        noise_start = time.time()
         noisy_embedded = None
         if properties.noise_sigma > 0:
             noisy_embedded = add_noise(
@@ -149,7 +168,8 @@ class DatasetGenerator:
                 properties.random_seed + 1000  # Different seed for noise
             )
             if verbose:
-                print(f"  ✓ Added noise (σ={properties.noise_sigma}): {noisy_embedded.shape}")
+                noise_time = time.time() - noise_start
+                print(f"  ✓ Added noise (σ={properties.noise_sigma}): {noisy_embedded.shape} in {noise_time:.2f}s")
         
         generation_time = time.time() - start_time
         
@@ -165,14 +185,17 @@ class DatasetGenerator:
         )
         
         # 5. Create train/test split if requested
+        split_start = time.time()
         if create_train_test and noisy_embedded is not None:
             dataset.create_train_test_split()
             if verbose:
                 split_info = dataset.train_test_data
-                print(f"  ✓ Train/test split: {split_info['train_data'].shape}/{split_info['test_data'].shape}")
+                split_time = time.time() - split_start
+                print(f"  ✓ Train/test split: {split_info['train_data'].shape}/{split_info['test_data'].shape} in {split_time:.2f}s")
         
         if verbose:
             print(f"  ✓ Dataset {properties.dataset_num} completed in {generation_time:.2f}s")
+            print(f"      Breakdown: manifold={manifold_time:.1f}s, norm={norm_time:.1f}s")
         
         return dataset
     

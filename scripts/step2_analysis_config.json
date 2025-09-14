@@ -1,0 +1,40 @@
+{
+  "dimension_estimation": {
+    "methods": ["PCA", "k-NN", "TwoNN", "MLE"],
+    "max_points_for_analysis": 2000,
+    "k_neighbors_range": [10, 20, 30],
+    "comment": "Methods to use for dimension estimation. Reduce max_points for speed."
+  },
+  
+  "curvature_analysis": {
+    "enable_mean_curvature": true,
+    "enable_pca_curvature": true,
+    "k_neighbors": 40,
+    "max_points_for_curvature": 1000,
+    "weight": "gaussian",
+    "regularization": 1e-10,
+    "comment": "Curvature estimation settings. Mean curvature is more accurate but slower."
+  },
+  
+  "geometric_statistics": {
+    "compute_diameter": true,
+    "compute_volume": true,
+    "compute_density_analysis": true,
+    "sample_size_for_diameter": 2000,
+    "comment": "Which geometric properties to compute."
+  },
+  
+  "output": {
+    "save_detailed_results": true,
+    "create_plots": true,
+    "plot_format": "png",
+    "plot_dpi": 300,
+    "comment": "Output settings for results and visualization."
+  },
+  
+  "performance": {
+    "max_datasets": null,
+    "parallel_processing": false,
+    "comment": "Performance tuning options. Set max_datasets to limit analysis for testing."
+  }
+}
