@@ -429,11 +429,17 @@ def create_analysis_plots(
         for i, col in enumerate(available_geom_cols):
             valid_df = df.dropna(subset=[col])
             if len(valid_df) > 0:
-                axes[i].hist(valid_df[col], bins=20, alpha=0.7, edgecolor='black')
-                axes[i].set_xlabel(col.replace("_", " ").title())
-                axes[i].set_ylabel("Frequency")
-                axes[i].set_title(f"Distribution of {col.replace('_', ' ').title()}")
-                axes[i].grid(True, alpha=0.3)
+                # Filter out infinite values
+                finite_data = valid_df[col][np.isfinite(valid_df[col])]
+                if len(finite_data) > 0:
+                    axes[i].hist(finite_data, bins=20, alpha=0.7, edgecolor='black')
+                    axes[i].set_xlabel(col.replace("_", " ").title())
+                    axes[i].set_ylabel("Frequency")
+                    axes[i].set_title(f"Distribution of {col.replace('_', ' ').title()}")
+                    axes[i].grid(True, alpha=0.3)
+                else:
+                    axes[i].text(0.5, 0.5, 'No finite data', ha='center', va='center', 
+                               transform=axes[i].transAxes)
         
         plt.tight_layout()
         plt.savefig(plot_dir / f"geometric_properties.{plot_format}", dpi=dpi)

@@ -1,0 +1,30 @@
+Neural Network Manifold Denoising - Step 1: Dataset Generation
+======================================================================
+Experiment ID: data_250914_0100
+Output directory: data/data_250914_0100
+
+Dataset Configuration:
+  k (groups): [20]
+  N (points per group): 1000
+  d (intrinsic dims): [2, 4, 8]
+  D (ambient dims): [100, 300, 1000]
+  σ (kernel smoothness): [0.01, 0.1, 1.0, 10.0, 100.0]
+  noise_σ: 0.01
+  base_type: unit_ball
+  Processing: centralize=True, rescale=True, rotation=True
+
+Total combinations: 3 d × 3 D × 1 k × 5 σ = 45 datasets
+
+Starting dataset generation...
+Dataset Generation Experiment: data_250914_0100
+============================================================
+Output directory: data/data_250914_0100
+Total datasets: 45
+
+[1/45] Generating dataset 0: d=2, D=100, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=2, D=100, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 89.17s
+    ✓ GP setup (inversions): 18.37s
+    Starting GP generation for 20 groups × 100 functions...

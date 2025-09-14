@@ -193,11 +193,11 @@ def main():
         print(f"\nWould generate {len(properties_list)} datasets in {generator.output_dir}")
         return
     
-    # Confirm generation
-    response = input(f"\nGenerate {len(properties_list)} datasets? [y/N]: ")
-    if response.lower() not in ['y', 'yes']:
-        print("Generation cancelled.")
-        return
+    # # Confirm generation
+    # response = input(f"\nGenerate {len(properties_list)} datasets? [y/N]: ")
+    # if response.lower() not in ['y', 'yes']:
+    #     print("Generation cancelled.")
+    #     return
     
     # Generate datasets
     print("\nStarting dataset generation...")
