@@ -29,18 +29,24 @@ def summarize_visualizations(base_dir: Path):
             for data_type in sorted(data_types):
                 png_files = list(data_type.glob("*.png"))
                 
-                # Separate new and old format files
-                new_3d = [f for f in png_files if f.name.startswith("3d_pointcloud_")]
-                new_2d = [f for f in png_files if f.name.startswith("2d_projection_")]
-                old_files = [f for f in png_files if f.name.startswith("pointcloud_dims_")]
+                # Separate new format files by version
+                full_3d = [f for f in png_files if f.name.startswith("3d_pointcloud_") and f.name.endswith("_FULL.png")]
+                full_2d = [f for f in png_files if f.name.startswith("2d_projection_") and f.name.endswith("_FULL.png")]
+                bounded_3d = [f for f in png_files if f.name.startswith("3d_pointcloud_") and f.name.endswith("_BOUNDED.png")]
+                bounded_2d = [f for f in png_files if f.name.startswith("2d_projection_") and f.name.endswith("_BOUNDED.png")]
+                old_files = [f for f in png_files if not any(suffix in f.name for suffix in ["_FULL.png", "_BOUNDED.png"])]
                 
                 print(f"    📁 {data_type.name}:")
-                if new_3d:
-                    print(f"      ✅ {len(new_3d)} new 3D plots")
-                if new_2d:
-                    print(f"      ✅ {len(new_2d)} new 2D projections")
+                if full_3d:
+                    print(f"      ✅ {len(full_3d)} FULL 3D plots (all batches)")
+                if full_2d:
+                    print(f"      ✅ {len(full_2d)} FULL 2D projections (all batches)")
+                if bounded_3d:
+                    print(f"      ✅ {len(bounded_3d)} BOUNDED 3D plots (limited batches)")
+                if bounded_2d:
+                    print(f"      ✅ {len(bounded_2d)} BOUNDED 2D projections (limited batches)")
                 if old_files:
-                    print(f"      🗂️  {len(old_files)} old combined plots")
+                    print(f"      🗂️  {len(old_files)} old format plots")
     
     # Mesh visualizations
     mesh_dir = base_dir / "meshes"

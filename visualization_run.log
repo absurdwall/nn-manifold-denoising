@@ -1,0 +1,65 @@
+nohup: ignoring input
+01:02:17 - INFO - Starting Step 3.5: Data Visualization Pipeline
+01:02:17 - INFO - Data directory: data/data_250914_0100
+01:02:17 - INFO - Output directory: plots/step3_5_data_viz_data_250914_0100_250918_0102
+01:02:17 - INFO - Max datasets: 0
+01:02:17 - INFO - Coordinate combinations: 10
+01:02:17 - INFO - Visualization limits: k≤5, N≤1000
+01:02:17 - INFO - Mesh limits: k≤5, N≤1000
+01:02:17 - INFO - Open3D available - mesh generation enabled
+01:02:17 - INFO - Found 45 datasets to process
+01:02:17 - INFO - 
+[1/45] Processing dataset0...
+01:02:17 - INFO -   Processing raw data (shape: (20000, 100))
+01:02:17 - INFO - Creating point cloud plots for dataset0 (raw)
+01:02:17 - INFO -   Data shape: (20000, 100), k=20, N=1000, D=100, d=2
+01:02:17 - INFO -   Will generate both full plots (k=20, N=1000) and bounded plots (k=5, N=1000)
+01:02:17 - INFO -   Creating 10 coordinate combinations × 2 versions (full + bounded)
+01:02:17 - INFO -     Combination 1/10: dims (96,2,8) - creating full version
+01:02:20 - INFO -     Combination 1/10: dims (96,2,8) - creating bounded version
+01:02:22 - INFO -     ✓ Saved combination 1/10: FULL + BOUNDED versions
+01:02:22 - INFO -     Combination 2/10: dims (24,30,36) - creating full version
+01:02:26 - INFO -     Combination 2/10: dims (24,30,36) - creating bounded version
+01:02:29 - INFO -     ✓ Saved combination 2/10: FULL + BOUNDED versions
+01:02:29 - INFO -     Combination 3/10: dims (60,66,72) - creating full version
+01:02:31 - INFO -     Combination 3/10: dims (60,66,72) - creating bounded version
+01:02:32 - INFO -     ✓ Saved combination 3/10: FULL + BOUNDED versions
+01:02:32 - INFO -     Combination 4/10: dims (48,54,60) - creating full version
+01:02:35 - INFO -     Combination 4/10: dims (48,54,60) - creating bounded version
+01:02:36 - INFO -     ✓ Saved combination 4/10: FULL + BOUNDED versions
+01:02:36 - INFO -     Combination 5/10: dims (36,42,48) - creating full version
+01:02:39 - INFO -     Combination 5/10: dims (36,42,48) - creating bounded version
+01:02:40 - INFO -     ✓ Saved combination 5/10: FULL + BOUNDED versions
+01:02:40 - INFO -     Combination 6/10: dims (72,78,84) - creating full version
+01:02:42 - INFO -     Combination 6/10: dims (72,78,84) - creating bounded version
+01:02:44 - INFO -     ✓ Saved combination 6/10: FULL + BOUNDED versions
+01:02:44 - INFO -     Combination 7/10: dims (97,98,99) - creating full version
+01:02:46 - INFO -     Combination 7/10: dims (97,98,99) - creating bounded version
+01:02:48 - INFO -     ✓ Saved combination 7/10: FULL + BOUNDED versions
+01:02:48 - INFO -     Combination 8/10: dims (0,1,2) - creating full version
+01:02:50 - INFO -     Combination 8/10: dims (0,1,2) - creating bounded version
+01:02:52 - INFO -     ✓ Saved combination 8/10: FULL + BOUNDED versions
+01:02:52 - INFO -     Combination 9/10: dims (12,18,24) - creating full version
+01:02:54 - INFO -     Combination 9/10: dims (12,18,24) - creating bounded version
+01:02:56 - INFO -     ✓ Saved combination 9/10: FULL + BOUNDED versions
+01:02:56 - INFO -     Combination 10/10: dims (84,90,96) - creating full version
+01:02:58 - INFO -     Combination 10/10: dims (84,90,96) - creating bounded version
+01:02:59 - INFO -     ✓ Saved combination 10/10: FULL + BOUNDED versions
+01:02:59 - INFO -   Processing clean data (shape: (20000, 100))
+01:02:59 - INFO - Creating point cloud plots for dataset0 (clean)
+01:02:59 - INFO -   Data shape: (20000, 100), k=20, N=1000, D=100, d=2
+01:02:59 - INFO -   Will generate both full plots (k=20, N=1000) and bounded plots (k=5, N=1000)
+01:02:59 - INFO -   Creating 10 coordinate combinations × 2 versions (full + bounded)
+01:02:59 - INFO -     Combination 1/10: dims (96,2,8) - creating full version
+01:03:02 - INFO -     Combination 1/10: dims (96,2,8) - creating bounded version
+01:03:03 - INFO -     ✓ Saved combination 1/10: FULL + BOUNDED versions
+01:03:03 - INFO -     Combination 2/10: dims (24,30,36) - creating full version
+01:03:06 - INFO -     Combination 2/10: dims (24,30,36) - creating bounded version
+01:03:07 - INFO -     ✓ Saved combination 2/10: FULL + BOUNDED versions
+01:03:07 - INFO -     Combination 3/10: dims (60,66,72) - creating full version
+01:03:09 - INFO -     Combination 3/10: dims (60,66,72) - creating bounded version
+01:03:11 - INFO -     ✓ Saved combination 3/10: FULL + BOUNDED versions
+01:03:11 - INFO -     Combination 4/10: dims (48,54,60) - creating full version
+01:03:13 - INFO -     Combination 4/10: dims (48,54,60) - creating bounded version
+01:03:15 - INFO -     ✓ Saved combination 4/10: FULL + BOUNDED versions
+01:03:15 - INFO -     Combination 5/10: dims (36,42,48) - creating full version

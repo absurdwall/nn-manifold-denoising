@@ -130,7 +130,10 @@ def create_point_cloud_plots(
     max_vis_k: int = 5,
     max_vis_n: int = 100
 ) -> None:
-    """Create multiple 3D point cloud visualizations with different coordinate combinations."""
+    """Create multiple 3D point cloud visualizations with different coordinate combinations.
+    
+    Generates both full data plots and bounded (limited k,N) plots for clarity.
+    """
     
     properties = metadata['properties']
     k = properties['k']
@@ -141,34 +144,15 @@ def create_point_cloud_plots(
     logger.info(f"Creating point cloud plots for {dataset_name} ({data_type})")
     logger.info(f"  Data shape: {data.shape}, k={k}, N={N}, D={D}, d={d}")
     
-    # Apply visualization limits for clearer plots
+    # Get colors for all batches (for full plots)
+    colors_full = get_colorblind_friendly_colors(k)
+    
+    # For bounded plots
     vis_k = min(k, max_vis_k)
     vis_n = min(N, max_vis_n)
-    total_vis_points = vis_k * vis_n
+    colors_bounded = get_colorblind_friendly_colors(vis_k)
     
-    logger.info(f"  Visualization limits: k={vis_k}/{k}, N={vis_n}/{N}, total={total_vis_points}")
-    
-    # Sample data for visualization
-    vis_data = []
-    for batch_idx in range(vis_k):
-        start_idx = batch_idx * N
-        end_idx = (batch_idx + 1) * N
-        batch_data = data[start_idx:end_idx]
-        
-        # Sample vis_n points from this batch
-        if vis_n < N:
-            sample_indices = np.random.choice(N, vis_n, replace=False)
-            batch_sample = batch_data[sample_indices]
-        else:
-            batch_sample = batch_data
-        
-        vis_data.append(batch_sample)
-    
-    vis_data = np.vstack(vis_data)
-    logger.info(f"  Sampled data shape: {vis_data.shape}")
-    
-    # Get colors for visualization batches
-    colors = get_colorblind_friendly_colors(vis_k)
+    logger.info(f"  Will generate both full plots (k={k}, N={N}) and bounded plots (k={vis_k}, N={vis_n})")
     
     # Create directory for this dataset and data type
     plot_dir = output_dir / "point_clouds" / dataset_name / data_type
@@ -210,36 +194,135 @@ def create_point_cloud_plots(
         else:
             combinations = [(0, 1, 2)]
     
-    logger.info(f"  Creating {len(combinations)} coordinate combinations")
+    logger.info(f"  Creating {len(combinations)} coordinate combinations × 2 versions (full + bounded)")
     
-    # Create plots for each combination
+    # Create plots for each combination - BOTH full and bounded versions
     for idx, (dim1, dim2, dim3) in enumerate(combinations):
         
-        # Create 3D point cloud plot
+        # VERSION 1: FULL DATA PLOT
+        logger.info(f"    Combination {idx+1}/{len(combinations)}: dims ({dim1},{dim2},{dim3}) - creating full version")
+        
+        # Create 3D point cloud plot - FULL VERSION
         fig = plt.figure(figsize=(12, 9))
         ax = fig.add_subplot(111, projection='3d')
         
-        # Plot each batch with different color
-        for batch_idx in range(vis_k):
-            start_idx = batch_idx * vis_n
-            end_idx = (batch_idx + 1) * vis_n
+        # Plot each batch with different color - ALL BATCHES
+        for batch_idx in range(k):
+            start_idx = batch_idx * N
+            end_idx = (batch_idx + 1) * N
             
-            batch_data = vis_data[start_idx:end_idx]
+            batch_data = data[start_idx:end_idx]
             
             ax.scatter(
                 batch_data[:, dim1],
                 batch_data[:, dim2], 
                 batch_data[:, dim3],
-                c=colors[batch_idx],
-                label=f'Batch {batch_idx + 1}',
-                alpha=0.7,
-                s=15
+                c=colors_full[batch_idx],
+                label=f'Batch {batch_idx + 1}' if batch_idx < 10 else '',  # Limit legend entries
+                alpha=0.6,
+                s=8  # Smaller points for full data
             )
         
         ax.set_xlabel(f'Dimension {dim1}')
         ax.set_ylabel(f'Dimension {dim2}')
         ax.set_zlabel(f'Dimension {dim3}')
-        ax.set_title(f'{dataset_name} - {data_type.title()} Data\n'
+        ax.set_title(f'{dataset_name} - {data_type.title()} Data (Full)\n'
+                    f'3D Point Cloud: Dimensions ({dim1}, {dim2}, {dim3})\n'
+                    f'All {k} batches, {N} samples/batch, σ={properties.get("kernel_smoothness", "N/A")}',
+                    fontsize=12, pad=20)
+        
+        # Position legend outside the plot (only show first 10 batches in legend)
+        if k <= 10:
+            ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+        
+        plt.tight_layout()
+        
+        # Save FULL 3D plot
+        plot_path_full_3d = plot_dir / f'3d_pointcloud_dims_{dim1}_{dim2}_{dim3}_FULL.png'
+        plt.savefig(plot_path_full_3d, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        # Create 2D projection plot - FULL VERSION
+        fig, ax = plt.subplots(figsize=(10, 8))
+        
+        for batch_idx in range(k):
+            start_idx = batch_idx * N
+            end_idx = (batch_idx + 1) * N
+            
+            batch_data = data[start_idx:end_idx]
+            
+            ax.scatter(
+                batch_data[:, dim1],
+                batch_data[:, dim2],
+                c=colors_full[batch_idx],
+                label=f'Batch {batch_idx + 1}' if batch_idx < 10 else '',
+                alpha=0.6,
+                s=8
+            )
+        
+        ax.set_xlabel(f'Dimension {dim1}')
+        ax.set_ylabel(f'Dimension {dim2}')
+        ax.set_title(f'{dataset_name} - {data_type.title()} Data (Full)\n'
+                    f'2D Projection: Dimensions ({dim1}, {dim2})\n'
+                    f'All {k} batches, {N} samples/batch, σ={properties.get("kernel_smoothness", "N/A")}',
+                    fontsize=12, pad=15)
+        if k <= 10:
+            ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left')
+        ax.grid(True, alpha=0.3)
+        
+        plt.tight_layout()
+        
+        # Save FULL 2D plot
+        plot_path_full_2d = plot_dir / f'2d_projection_dims_{dim1}_{dim2}_FULL.png'
+        plt.savefig(plot_path_full_2d, dpi=300, bbox_inches='tight')
+        plt.close()
+        
+        # VERSION 2: BOUNDED DATA PLOT
+        logger.info(f"    Combination {idx+1}/{len(combinations)}: dims ({dim1},{dim2},{dim3}) - creating bounded version")
+        
+        # Sample data for bounded visualization
+        bounded_data = []
+        for batch_idx in range(vis_k):
+            start_idx = batch_idx * N
+            end_idx = (batch_idx + 1) * N
+            batch_data = data[start_idx:end_idx]
+            
+            # Sample vis_n points from this batch
+            if vis_n < N:
+                sample_indices = np.random.choice(N, vis_n, replace=False)
+                batch_sample = batch_data[sample_indices]
+            else:
+                batch_sample = batch_data[:vis_n]
+            
+            bounded_data.append(batch_sample)
+        
+        bounded_data = np.vstack(bounded_data)
+        
+        # Create 3D point cloud plot - BOUNDED VERSION
+        fig = plt.figure(figsize=(12, 9))
+        ax = fig.add_subplot(111, projection='3d')
+        
+        # Plot each batch with different color - LIMITED BATCHES
+        for batch_idx in range(vis_k):
+            start_idx = batch_idx * vis_n
+            end_idx = (batch_idx + 1) * vis_n
+            
+            batch_data = bounded_data[start_idx:end_idx]
+            
+            ax.scatter(
+                batch_data[:, dim1],
+                batch_data[:, dim2], 
+                batch_data[:, dim3],
+                c=colors_bounded[batch_idx],
+                label=f'Batch {batch_idx + 1}',
+                alpha=0.7,
+                s=15  # Larger points for bounded data
+            )
+        
+        ax.set_xlabel(f'Dimension {dim1}')
+        ax.set_ylabel(f'Dimension {dim2}')
+        ax.set_zlabel(f'Dimension {dim3}')
+        ax.set_title(f'{dataset_name} - {data_type.title()} Data (Bounded)\n'
                     f'3D Point Cloud: Dimensions ({dim1}, {dim2}, {dim3})\n'
                     f'Showing {vis_k}/{k} batches, {vis_n}/{N} samples/batch, σ={properties.get("kernel_smoothness", "N/A")}',
                     fontsize=12, pad=20)
@@ -249,24 +332,24 @@ def create_point_cloud_plots(
         
         plt.tight_layout()
         
-        # Save 3D plot
-        plot_path = plot_dir / f'3d_pointcloud_dims_{dim1}_{dim2}_{dim3}.png'
-        plt.savefig(plot_path, dpi=300, bbox_inches='tight')
+        # Save BOUNDED 3D plot
+        plot_path_bounded_3d = plot_dir / f'3d_pointcloud_dims_{dim1}_{dim2}_{dim3}_BOUNDED.png'
+        plt.savefig(plot_path_bounded_3d, dpi=300, bbox_inches='tight')
         plt.close()
         
-        # Create 2D projection plot
+        # Create 2D projection plot - BOUNDED VERSION
         fig, ax = plt.subplots(figsize=(10, 8))
         
         for batch_idx in range(vis_k):
             start_idx = batch_idx * vis_n
             end_idx = (batch_idx + 1) * vis_n
             
-            batch_data = vis_data[start_idx:end_idx]
+            batch_data = bounded_data[start_idx:end_idx]
             
             ax.scatter(
                 batch_data[:, dim1],
                 batch_data[:, dim2],
-                c=colors[batch_idx],
+                c=colors_bounded[batch_idx],
                 label=f'Batch {batch_idx + 1}',
                 alpha=0.7,
                 s=15
@@ -274,7 +357,7 @@ def create_point_cloud_plots(
         
         ax.set_xlabel(f'Dimension {dim1}')
         ax.set_ylabel(f'Dimension {dim2}')
-        ax.set_title(f'{dataset_name} - {data_type.title()} Data\n'
+        ax.set_title(f'{dataset_name} - {data_type.title()} Data (Bounded)\n'
                     f'2D Projection: Dimensions ({dim1}, {dim2})\n'
                     f'Showing {vis_k}/{k} batches, {vis_n}/{N} samples/batch, σ={properties.get("kernel_smoothness", "N/A")}',
                     fontsize=12, pad=15)
@@ -283,12 +366,12 @@ def create_point_cloud_plots(
         
         plt.tight_layout()
         
-        # Save 2D plot
-        plot_path_2d = plot_dir / f'2d_projection_dims_{dim1}_{dim2}.png'
-        plt.savefig(plot_path_2d, dpi=300, bbox_inches='tight')
+        # Save BOUNDED 2D plot
+        plot_path_bounded_2d = plot_dir / f'2d_projection_dims_{dim1}_{dim2}_BOUNDED.png'
+        plt.savefig(plot_path_bounded_2d, dpi=300, bbox_inches='tight')
         plt.close()
         
-        logger.info(f"    ✓ Saved combination {idx+1}/{len(combinations)}: 3D dims ({dim1},{dim2},{dim3}) + 2D projection ({dim1},{dim2})")
+        logger.info(f"    ✓ Saved combination {idx+1}/{len(combinations)}: FULL + BOUNDED versions")
 
 
 def create_mesh_visualization(
@@ -517,6 +600,152 @@ def create_mesh_visualization(
         logger.error(f"Mesh visualization failed: {str(e)}")
 
 
+def save_visualization_metadata(
+    args: argparse.Namespace,
+    processed_datasets: List[Dict[str, Any]],
+    output_dir: Path,
+    logger: logging.Logger
+) -> None:
+    """Save comprehensive metadata about the visualization run."""
+    
+    from datetime import datetime
+    import platform
+    import sys
+    
+    logger.info("Saving comprehensive visualization metadata...")
+    
+    # Create metadata directory
+    metadata_dir = output_dir / "metadata"
+    metadata_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Comprehensive metadata
+    metadata = {
+        "visualization_run_info": {
+            "timestamp": datetime.now().isoformat(),
+            "script_version": "step3_5_data_visualization.py",
+            "task_name": "Step 3.5: Data Visualization Pipeline",
+            "total_runtime_datasets": len(processed_datasets),
+            "requested_max_datasets": args.max_datasets if args.max_datasets > 0 else "ALL",
+            "data_directory": str(args.data_dir),
+            "output_directory": str(args.output_dir)
+        },
+        
+        "visualization_parameters": {
+            "coordinate_combinations": args.n_combinations,
+            "point_cloud_settings": {
+                "max_vis_k": args.max_vis_k,
+                "max_vis_n": args.max_vis_n,
+                "generates_full_version": True,
+                "generates_bounded_version": True,
+                "full_version_note": "Shows all k batches with N samples each",
+                "bounded_version_note": f"Shows max {args.max_vis_k} batches with max {args.max_vis_n} samples each"
+            },
+            "mesh_settings": {
+                "max_mesh_k": args.max_mesh_k,
+                "max_mesh_n": args.max_mesh_n,
+                "mesh_methods": ["poisson", "ball_pivoting", "convex_hull", "delaunay"],
+                "generates_ply_files": True,
+                "generates_png_visualizations": True,
+                "mesh_data_type": "clean"
+            }
+        },
+        
+        "system_info": {
+            "python_version": sys.version,
+            "platform": platform.platform(),
+            "open3d_available": OPEN3D_AVAILABLE,
+            "working_directory": str(Path.cwd())
+        },
+        
+        "output_file_structure": {
+            "point_clouds_per_dataset": args.n_combinations * 2 * 2 * 3,  # combinations × versions × plot_types × data_types
+            "explanation": f"Each dataset generates {args.n_combinations} coordinate combinations × 2 versions (FULL/BOUNDED) × 2 plot types (3D/2D) × 3 data types (raw/clean/noisy)",
+            "mesh_files_per_dataset": 8,  # 4 methods × 2 files each (PLY + PNG)
+            "mesh_explanation": "Each dataset generates 4 mesh methods × 2 files each (PLY + PNG visualization) for clean data only"
+        },
+        
+        "processed_datasets": processed_datasets,
+        
+        "file_naming_convention": {
+            "point_clouds": {
+                "3d_full": "3d_pointcloud_dims_{dim1}_{dim2}_{dim3}_FULL.png",
+                "3d_bounded": "3d_pointcloud_dims_{dim1}_{dim2}_{dim3}_BOUNDED.png", 
+                "2d_full": "2d_projection_dims_{dim1}_{dim2}_FULL.png",
+                "2d_bounded": "2d_projection_dims_{dim1}_{dim2}_BOUNDED.png"
+            },
+            "meshes": {
+                "ply_files": "mesh_{method}_{data_type}.ply",
+                "png_visualizations": "mesh_{method}_{data_type}_visualization.png",
+                "point_cloud": "pointcloud_{data_type}.ply"
+            }
+        },
+        
+        "dataset_parameter_summary": {
+            "total_datasets_in_source": len(processed_datasets),
+            "parameter_ranges": {},
+            "base_types": [],
+            "data_shapes": []
+        }
+    }
+    
+    # Calculate parameter ranges from processed datasets
+    if processed_datasets:
+        all_k = [d['metadata']['properties']['k'] for d in processed_datasets]
+        all_N = [d['metadata']['properties']['N'] for d in processed_datasets]
+        all_D = [d['metadata']['properties']['D'] for d in processed_datasets]
+        all_d = [d['metadata']['properties']['d'] for d in processed_datasets]
+        all_kernel_smoothness = [d['metadata']['properties']['kernel_smoothness'] for d in processed_datasets]
+        all_base_types = [d['metadata']['properties']['base_type'] for d in processed_datasets]
+        all_data_shapes = [d['data_shape'] for d in processed_datasets if 'data_shape' in d]
+        
+        metadata["dataset_parameter_summary"]["parameter_ranges"] = {
+            "k": [min(all_k), max(all_k)],
+            "N": [min(all_N), max(all_N)],
+            "D": [min(all_D), max(all_D)],
+            "d": [min(all_d), max(all_d)],
+            "kernel_smoothness": [min(all_kernel_smoothness), max(all_kernel_smoothness)]
+        }
+        metadata["dataset_parameter_summary"]["base_types"] = list(set(all_base_types))
+        metadata["dataset_parameter_summary"]["data_shapes"] = list(set(all_data_shapes))
+    
+    # Save metadata
+    metadata_path = metadata_dir / "visualization_run_metadata.json"
+    with open(metadata_path, 'w') as f:
+        json.dump(metadata, f, indent=2)
+    
+    logger.info(f"  ✓ Saved comprehensive metadata: {metadata_path}")
+    
+    # Save a human-readable summary
+    summary_path = metadata_dir / "visualization_run_summary.txt"
+    with open(summary_path, 'w') as f:
+        f.write("STEP 3.5 DATA VISUALIZATION RUN SUMMARY\n")
+        f.write("=" * 50 + "\n\n")
+        
+        f.write(f"Timestamp: {metadata['visualization_run_info']['timestamp']}\n")
+        f.write(f"Output Directory: {metadata['visualization_run_info']['output_directory']}\n")
+        f.write(f"Data Directory: {metadata['visualization_run_info']['data_directory']}\n")
+        f.write(f"Total Datasets Processed: {metadata['visualization_run_info']['total_runtime_datasets']}\n\n")
+        
+        f.write("VISUALIZATION PARAMETERS:\n")
+        f.write(f"  Coordinate Combinations: {metadata['visualization_parameters']['coordinate_combinations']}\n")
+        f.write(f"  Point Cloud - Max Vis K: {metadata['visualization_parameters']['point_cloud_settings']['max_vis_k']}\n")
+        f.write(f"  Point Cloud - Max Vis N: {metadata['visualization_parameters']['point_cloud_settings']['max_vis_n']}\n")
+        f.write(f"  Mesh - Max K: {metadata['visualization_parameters']['mesh_settings']['max_mesh_k']}\n")
+        f.write(f"  Mesh - Max N: {metadata['visualization_parameters']['mesh_settings']['max_mesh_n']}\n\n")
+        
+        f.write("OUTPUT FILES PER DATASET:\n")
+        f.write(f"  Point Cloud Plots: {metadata['output_file_structure']['point_clouds_per_dataset']}\n")
+        f.write(f"  Mesh Files: {metadata['output_file_structure']['mesh_files_per_dataset']}\n\n")
+        
+        if processed_datasets:
+            f.write("DATASET PARAMETER RANGES:\n")
+            for param, range_vals in metadata["dataset_parameter_summary"]["parameter_ranges"].items():
+                f.write(f"  {param}: {range_vals[0]} to {range_vals[1]}\n")
+            f.write(f"  Base Types: {', '.join(metadata['dataset_parameter_summary']['base_types'])}\n")
+    
+    logger.info(f"  ✓ Saved human-readable summary: {summary_path}")
+
+
 def create_summary_visualization(
     datasets_info: List[Dict[str, Any]],
     output_dir: Path,
@@ -725,15 +954,19 @@ def main():
     if processed_datasets:
         create_summary_visualization(processed_datasets, args.output_dir, logger)
     
+    # Save comprehensive metadata about this visualization run
+    save_visualization_metadata(args, processed_datasets, args.output_dir, logger)
+    
     logger.info(f"\n{'='*60}")
     logger.info("VISUALIZATION COMPLETE!")
     logger.info(f"{'='*60}")
     logger.info(f"Processed {len(processed_datasets)} datasets successfully")
     logger.info(f"Output directory: {args.output_dir}")
     logger.info("Generated:")
-    logger.info("  📊 Point cloud visualizations (multiple 3D combinations)")
+    logger.info("  📊 Point cloud visualizations (FULL + BOUNDED versions)")
     logger.info("  🔗 Mesh reconstructions (if Open3D available)")
     logger.info("  📋 Summary comparison plots")
+    logger.info("  📝 Comprehensive metadata logs")
     logger.info(f"{'='*60}")
 
 

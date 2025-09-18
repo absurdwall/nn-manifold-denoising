@@ -3,6 +3,8 @@ data/*
 !data/.gitkeep
 results/*
 !results/.gitkeep
+plots/*
+!plots/.gitkeep
 
 # Python cache files
 __pycache__/

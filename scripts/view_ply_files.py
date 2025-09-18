@@ -262,8 +262,8 @@ def main():
     parser.add_argument("--ply_file", type=Path,
                        help="Specific PLY file to visualize")
     parser.add_argument("--ply_dir", type=Path,
-                       default=Path("plots/step3_5_data_visualization"),
-                       help="Directory to search for PLY files")
+                       default=Path("plots"),
+                       help="Directory to search for PLY files (will search recursively)")
     parser.add_argument("--output_dir", type=Path,
                        default=Path("plots/ply_views"),
                        help="Directory to save visualization images")
