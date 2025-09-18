@@ -25,3 +25,142 @@ Total datasets: 1
     Generating manifold: k=100, N=1000, d=4, D=1000, σ=1.0, base=unit_ball
     ✓ Intrinsic coordinates: 0.03s
   Generated 100 groups of intrinsic coordinates
+    ✓ Kernel matrices (100x100): 2610.60s
+    ✓ GP setup (inversions): 11.49s
+    Starting GP generation for 100 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=339.54s, total=339.56s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.03s, sample=411.96s, total=424.89s
+      Group 2: cov=0.38s, sample=434.80s, total=456.40s
+      Group 3: cov=0.03s, sample=398.62s, total=416.04s
+      Group 4: cov=0.11s, sample=467.32s, total=510.73s
+      Group 5: cov=0.02s, sample=340.08s, total=397.23s
+      Group 6: cov=0.28s, sample=418.83s, total=487.58s
+      Group 7: cov=0.03s, sample=451.71s, total=537.87s
+      Group 8: cov=0.02s, sample=388.58s, total=477.47s
+      Group 9: cov=0.12s, sample=353.21s, total=452.88s
+      Group 10: cov=0.14s, sample=353.85s, total=471.74s
+      Group 11: cov=0.07s, sample=414.24s, total=531.20s
+      Group 12: cov=0.35s, sample=424.84s, total=555.53s
+      Group 13: cov=0.10s, sample=444.64s, total=590.47s
+      Group 14: cov=0.38s, sample=434.14s, total=585.26s
+      Group 15: cov=0.19s, sample=444.58s, total=605.01s
+      Group 16: cov=0.52s, sample=431.97s, total=619.22s
+      Group 17: cov=0.04s, sample=397.30s, total=537.57s
+      Group 18: cov=0.17s, sample=435.16s, total=642.92s
+      Group 19: cov=0.49s, sample=437.99s, total=650.42s
+      Group 20: cov=0.40s, sample=447.51s, total=677.34s
+      Group 21: cov=0.04s, sample=453.50s, total=692.42s
+      Group 22: cov=0.03s, sample=350.83s, total=603.69s
+      Group 23: cov=0.04s, sample=434.99s, total=690.80s
+      Group 24: cov=0.45s, sample=441.10s, total=716.77s
+      Group 25: cov=0.52s, sample=434.70s, total=740.23s
+      Group 26: cov=0.05s, sample=363.62s, total=672.43s
+      Group 27: cov=0.36s, sample=343.09s, total=636.54s
+      Group 28: cov=0.44s, sample=416.19s, total=724.39s
+      Group 29: cov=0.04s, sample=414.94s, total=742.93s
+      Group 30: cov=0.04s, sample=428.70s, total=768.33s
+      Group 31: cov=0.47s, sample=435.03s, total=786.58s
+      Group 32: cov=0.02s, sample=398.95s, total=717.97s
+      Group 33: cov=0.37s, sample=405.79s, total=774.44s
+      Group 34: cov=0.39s, sample=435.14s, total=826.67s
+      Group 35: cov=0.54s, sample=412.62s, total=811.15s
+      Group 36: cov=0.37s, sample=366.57s, total=798.29s
+      Group 37: cov=0.49s, sample=399.42s, total=802.30s
+      Group 38: cov=0.65s, sample=403.45s, total=853.14s
+      Group 39: cov=0.39s, sample=404.20s, total=832.55s
+      Group 40: cov=0.02s, sample=402.09s, total=852.93s
+      Group 41: cov=0.03s, sample=449.23s, total=907.59s
+      Group 42: cov=0.03s, sample=421.58s, total=902.41s
+      Group 43: cov=0.41s, sample=445.66s, total=915.63s
+      Group 44: cov=0.34s, sample=413.58s, total=923.47s
+      Group 45: cov=0.40s, sample=499.52s, total=994.73s
+      Group 46: cov=0.52s, sample=444.85s, total=960.48s
+      Group 47: cov=0.26s, sample=541.04s, total=1051.77s
+      Group 48: cov=0.03s, sample=392.44s, total=948.66s
+      Group 49: cov=0.13s, sample=535.59s, total=1099.20s
+      Group 50: cov=0.02s, sample=372.90s, total=864.61s
+      Group 51: cov=0.44s, sample=428.78s, total=1029.58s
+      Group 52: cov=0.49s, sample=395.72s, total=970.06s
+      Group 53: cov=0.11s, sample=418.93s, total=1061.66s
+      Group 54: cov=0.05s, sample=395.83s, total=987.28s
+      Group 55: cov=0.03s, sample=396.81s, total=1053.74s
+      Group 56: cov=0.39s, sample=452.54s, total=1077.19s
+      Group 57: cov=0.13s, sample=403.98s, total=1101.74s
+      Group 58: cov=0.34s, sample=495.91s, total=1147.79s
+      Group 59: cov=0.10s, sample=430.36s, total=1131.23s
+      Group 60: cov=0.11s, sample=473.51s, total=1142.36s
+      Group 61: cov=0.03s, sample=447.53s, total=1177.54s
+      Group 62: cov=0.56s, sample=494.46s, total=1126.70s
+      Group 63: cov=0.44s, sample=388.47s, total=1089.34s
+      Group 64: cov=0.37s, sample=421.18s, total=1091.47s
+      Group 65: cov=0.04s, sample=409.28s, total=1138.41s
+      Group 66: cov=0.03s, sample=410.53s, total=1156.12s
+      Group 67: cov=0.03s, sample=426.22s, total=1155.07s
+      Group 68: cov=0.15s, sample=440.25s, total=1207.16s
+      Group 69: cov=0.35s, sample=426.68s, total=1226.22s
+      Group 70: cov=0.03s, sample=464.59s, total=1271.39s
+      Group 71: cov=0.09s, sample=453.80s, total=1231.32s
+      Group 72: cov=0.02s, sample=394.45s, total=1152.52s
+      Group 73: cov=0.50s, sample=407.41s, total=1237.64s
+      Group 74: cov=0.02s, sample=377.51s, total=1228.87s
+      Group 75: cov=0.08s, sample=455.14s, total=1280.92s
+      Group 76: cov=0.45s, sample=405.06s, total=1255.13s
+      Group 77: cov=0.08s, sample=425.81s, total=1324.03s
+      Group 78: cov=0.55s, sample=444.61s, total=1349.80s
+      Group 79: cov=0.03s, sample=509.04s, total=1396.14s
+      Group 80: cov=0.03s, sample=438.75s, total=1343.77s
+      Group 81: cov=0.23s, sample=442.94s, total=1408.17s
+      Group 82: cov=0.08s, sample=405.76s, total=1281.45s
+      Group 83: cov=0.33s, sample=495.32s, total=1406.20s
+      Group 84: cov=0.03s, sample=416.45s, total=1384.15s
+      Group 85: cov=0.03s, sample=397.95s, total=1409.20s
+      Group 86: cov=0.43s, sample=498.72s, total=1488.30s
+      Group 87: cov=0.03s, sample=440.21s, total=1425.12s
+      Group 88: cov=0.39s, sample=436.78s, total=1475.65s
+      Group 89: cov=0.02s, sample=470.28s, total=1512.69s
+      Group 90: cov=0.08s, sample=351.50s, total=1364.93s
+      Group 91: cov=0.46s, sample=409.79s, total=1459.84s
+      Group 92: cov=0.03s, sample=420.48s, total=1526.78s
+      Group 93: cov=0.71s, sample=456.77s, total=1566.22s
+      Group 94: cov=0.03s, sample=471.23s, total=1580.41s
+      Group 95: cov=0.40s, sample=424.69s, total=1548.99s
+      Group 96: cov=0.34s, sample=417.90s, total=1535.41s
+      Group 97: cov=0.02s, sample=421.87s, total=1496.70s
+      Group 98: cov=0.35s, sample=404.77s, total=1533.97s
+      Group 99: cov=0.44s, sample=485.88s, total=1619.30s
+  ✓ Manifold generation completed in 101371.02s
+  Final shapes: intrinsic (100000, 4), embedded (100000, 1000)
+  ✓ Raw generation: (100000, 1000) in 101372.43s
+  ✓ Centralized (mean norm: 23.036398)
+  ✓ Rescaled (diameter: 50.9449 → 2.0000, factor: 25.4725)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (100000, 1000) in 3.60s
+  ✓ Train/test split: (80000, 1000)/(20000, 1000) in 0.55s
+  ✓ Dataset 0 completed in 101378.38s
+      Breakdown: manifold=101372.4s, norm=2.3s
+  ✓ Saved 13 files
+============================================================
+Generation Summary:
+  Total time: 101383.85s (1689.73m)
+  Successful: 1/1
+  Failed: 0/1
+  Average per dataset: 101383.85s
+  Results saved to: data/data_250914_0100_01
+
+======================================================================
+STEP 1 COMPLETE: Dataset Generation
+======================================================================
+✅ Successfully generated 1/1 datasets
+📁 Location: data/data_250914_0100_01
+⏱️  Total time: 101383.85s (1689.73m)
+
+Example dataset (dataset 0):
+  Parameters: d=4, D=1000, k=100, N=1000, σ=1.0
+  Clean shape: (100000, 1000)
+  Noisy shape: (100000, 1000)
+  Train/test: (80000, 1000)/(20000, 1000)
+
+🎉 Step 1 complete! Ready for Step 2: Geometric Analysis
+Next: python step2_geometric_analysis.py --experiment-id data_250914_0100

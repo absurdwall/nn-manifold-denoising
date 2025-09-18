@@ -28,3 +28,1819 @@ Total datasets: 45
     ✓ Kernel matrices (20x20): 89.17s
     ✓ GP setup (inversions): 18.37s
     Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.33s, sample=88.54s, total=88.87s
+      Group 1: cov=0.02s, sample=95.73s, total=98.88s
+      Group 2: cov=0.06s, sample=95.38s, total=102.02s
+      Group 3: cov=0.39s, sample=90.98s, total=100.50s
+      Group 4: cov=0.18s, sample=97.01s, total=110.51s
+      Group 5: cov=0.02s, sample=94.55s, total=112.87s
+      Group 6: cov=0.16s, sample=99.39s, total=119.69s
+      Group 7: cov=0.25s, sample=98.53s, total=120.74s
+      Group 8: cov=0.28s, sample=102.52s, total=132.33s
+      Group 9: cov=0.42s, sample=101.43s, total=135.64s
+      Group 10: cov=0.04s, sample=93.26s, total=126.58s
+      Group 11: cov=0.13s, sample=90.47s, total=124.03s
+      Group 12: cov=0.33s, sample=94.28s, total=131.35s
+      Group 13: cov=0.19s, sample=92.64s, total=134.41s
+      Group 14: cov=0.02s, sample=95.73s, total=137.24s
+      Group 15: cov=0.02s, sample=97.52s, total=141.94s
+      Group 16: cov=0.02s, sample=91.89s, total=142.25s
+      Group 17: cov=0.34s, sample=95.46s, total=146.56s
+      Group 18: cov=0.31s, sample=92.93s, total=149.29s
+      Group 19: cov=0.28s, sample=88.30s, total=146.71s
+  ✓ Manifold generation completed in 2626.53s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 2626.57s
+  ✓ Centralized (mean norm: 0.055312)
+  ✓ Rescaled (diameter: 25.6375 → 2.0000, factor: 12.8187)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.12s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.04s
+  ✓ Dataset 0 completed in 2626.74s
+      Breakdown: manifold=2626.6s, norm=0.1s
+  ✓ Saved 13 files
+
+[2/45] Generating dataset 1: d=2, D=100, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=2, D=100, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 54.21s
+    ✓ GP setup (inversions): 1.32s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.28s, sample=36.78s, total=37.06s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.18s, sample=36.11s, total=37.76s
+      Group 2: cov=0.49s, sample=43.42s, total=46.79s
+      Group 3: cov=0.43s, sample=42.26s, total=47.34s
+      Group 4: cov=0.48s, sample=47.84s, total=54.77s
+      Group 5: cov=0.03s, sample=52.97s, total=60.43s
+      Group 6: cov=0.04s, sample=46.44s, total=55.54s
+      Group 7: cov=0.47s, sample=42.57s, total=51.70s
+      Group 8: cov=0.39s, sample=42.92s, total=53.82s
+      Group 9: cov=0.03s, sample=41.75s, total=55.38s
+      Group 10: cov=0.46s, sample=43.17s, total=57.06s
+      Group 11: cov=0.10s, sample=43.59s, total=57.98s
+      Group 12: cov=0.07s, sample=45.59s, total=62.80s
+      Group 13: cov=0.44s, sample=50.41s, total=67.03s
+      Group 14: cov=0.30s, sample=55.59s, total=74.09s
+      Group 15: cov=0.03s, sample=50.79s, total=73.35s
+      Group 16: cov=0.33s, sample=42.41s, total=62.84s
+      Group 17: cov=0.03s, sample=40.83s, total=62.44s
+      Group 18: cov=0.57s, sample=44.40s, total=73.13s
+      Group 19: cov=0.64s, sample=48.18s, total=75.91s
+  ✓ Manifold generation completed in 1224.54s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1224.56s
+  ✓ Centralized (mean norm: 1.353288)
+  ✓ Rescaled (diameter: 23.7008 → 2.0000, factor: 11.8504)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.06s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 1 completed in 1224.65s
+      Breakdown: manifold=1224.6s, norm=0.0s
+  ✓ Saved 13 files
+
+[3/45] Generating dataset 2: d=2, D=100, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=2, D=100, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 54.71s
+    ✓ GP setup (inversions): 1.43s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.02s, sample=36.70s, total=36.73s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.03s, sample=50.31s, total=51.63s
+      Group 2: cov=0.08s, sample=54.13s, total=57.18s
+      Group 3: cov=0.03s, sample=43.95s, total=48.72s
+      Group 4: cov=0.47s, sample=42.48s, total=48.94s
+      Group 5: cov=0.03s, sample=39.31s, total=45.21s
+      Group 6: cov=0.03s, sample=40.89s, total=48.12s
+      Group 7: cov=0.05s, sample=44.60s, total=51.90s
+      Group 8: cov=0.03s, sample=39.09s, total=49.60s
+      Group 9: cov=0.03s, sample=42.51s, total=55.25s
+      Group 10: cov=0.11s, sample=42.10s, total=56.93s
+      Group 11: cov=0.14s, sample=45.60s, total=59.35s
+      Group 12: cov=0.44s, sample=53.08s, total=71.17s
+      Group 13: cov=0.41s, sample=54.89s, total=73.56s
+      Group 14: cov=0.07s, sample=41.96s, total=62.27s
+      Group 15: cov=0.64s, sample=58.13s, total=85.83s
+      Group 16: cov=0.16s, sample=43.41s, total=67.88s
+      Group 17: cov=0.54s, sample=41.57s, total=72.57s
+      Group 18: cov=0.02s, sample=43.03s, total=66.11s
+      Group 19: cov=0.59s, sample=43.64s, total=73.05s
+  ✓ Manifold generation completed in 1239.28s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1239.30s
+  ✓ Centralized (mean norm: 8.737914)
+  ✓ Rescaled (diameter: 17.2421 → 2.0000, factor: 8.6211)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.14s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.04s
+  ✓ Dataset 2 completed in 1239.49s
+      Breakdown: manifold=1239.3s, norm=0.0s
+  ✓ Saved 13 files
+
+[4/45] Generating dataset 3: d=2, D=100, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=2, D=100, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 60.65s
+    ✓ GP setup (inversions): 2.00s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.03s, sample=42.79s, total=42.82s
+      Group 1: cov=0.10s, sample=62.10s, total=64.22s
+      Group 2: cov=0.29s, sample=40.35s, total=42.98s
+      Group 3: cov=0.41s, sample=40.84s, total=45.27s
+      Group 4: cov=0.02s, sample=46.12s, total=51.08s
+      Group 5: cov=0.57s, sample=46.45s, total=55.17s
+      Group 6: cov=0.03s, sample=40.56s, total=48.07s
+      Group 7: cov=0.33s, sample=43.41s, total=52.99s
+      Group 8: cov=0.42s, sample=38.26s, total=48.85s
+      Group 9: cov=0.13s, sample=51.64s, total=64.20s
+      Group 10: cov=0.10s, sample=74.79s, total=91.03s
+      Group 11: cov=0.27s, sample=51.45s, total=67.18s
+      Group 12: cov=0.30s, sample=45.82s, total=67.98s
+      Group 13: cov=0.41s, sample=42.13s, total=59.54s
+      Group 14: cov=0.03s, sample=44.83s, total=63.56s
+      Group 15: cov=0.07s, sample=40.93s, total=60.16s
+      Group 16: cov=0.23s, sample=38.20s, total=58.33s
+      Group 17: cov=0.16s, sample=43.97s, total=67.20s
+      Group 18: cov=0.51s, sample=55.55s, total=84.63s
+      Group 19: cov=0.36s, sample=49.59s, total=80.25s
+  ✓ Manifold generation completed in 1279.01s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1279.03s
+  ✓ Centralized (mean norm: 10.213344)
+  ✓ Rescaled (diameter: 2.0460 → 2.0000, factor: 1.0230)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.07s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 3 completed in 1279.13s
+      Breakdown: manifold=1279.0s, norm=0.0s
+  ✓ Saved 13 files
+
+[5/45] Generating dataset 4: d=2, D=100, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=2, D=100, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 58.21s
+    ✓ GP setup (inversions): 3.46s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.27s, sample=31.81s, total=32.09s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.53s, sample=37.63s, total=39.61s
+      Group 2: cov=0.16s, sample=43.73s, total=46.55s
+      Group 3: cov=0.58s, sample=41.02s, total=46.22s
+      Group 4: cov=0.11s, sample=41.14s, total=47.60s
+      Group 5: cov=0.03s, sample=44.28s, total=51.15s
+      Group 6: cov=0.42s, sample=48.65s, total=56.95s
+      Group 7: cov=0.03s, sample=41.11s, total=49.51s
+      Group 8: cov=0.18s, sample=39.25s, total=49.25s
+      Group 9: cov=0.40s, sample=18.99s, total=34.08s
+      Group 10: cov=0.02s, sample=19.69s, total=25.63s
+      Group 11: cov=0.02s, sample=36.38s, total=43.39s
+      Group 12: cov=0.06s, sample=41.03s, total=57.41s
+      Group 13: cov=0.03s, sample=39.15s, total=54.66s
+      Group 14: cov=0.61s, sample=41.58s, total=64.67s
+      Group 15: cov=0.43s, sample=50.12s, total=73.23s
+      Group 16: cov=0.02s, sample=43.64s, total=65.52s
+      Group 17: cov=0.03s, sample=39.13s, total=65.56s
+      Group 18: cov=0.40s, sample=40.51s, total=63.16s
+      Group 19: cov=0.46s, sample=42.52s, total=74.97s
+  ✓ Manifold generation completed in 1105.21s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1105.26s
+  ✓ Centralized (mean norm: 10.837130)
+  ✓ Rescaled (diameter: 0.2150 → 2.0000, factor: 0.1075)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.09s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.04s
+  ✓ Dataset 4 completed in 1105.37s
+      Breakdown: manifold=1105.3s, norm=0.0s
+  ✓ Saved 13 files
+
+[6/45] Generating dataset 5: d=2, D=300, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=2, D=300, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 61.39s
+    ✓ GP setup (inversions): 9.99s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.15s, sample=164.27s, total=164.43s
+      Group 1: cov=0.04s, sample=113.53s, total=117.17s
+      Group 2: cov=0.33s, sample=124.63s, total=132.35s
+      Group 3: cov=0.34s, sample=119.04s, total=131.25s
+      Group 4: cov=0.13s, sample=148.18s, total=165.72s
+      Group 5: cov=0.34s, sample=117.62s, total=137.64s
+      Group 6: cov=0.02s, sample=128.60s, total=156.58s
+      Group 7: cov=0.36s, sample=129.04s, total=158.99s
+      Group 8: cov=0.55s, sample=142.97s, total=177.76s
+      Group 9: cov=0.31s, sample=125.79s, total=161.71s
+      Group 10: cov=0.48s, sample=126.76s, total=172.88s
+      Group 11: cov=0.37s, sample=157.44s, total=204.77s
+      Group 12: cov=0.14s, sample=137.03s, total=187.31s
+      Group 13: cov=0.03s, sample=127.40s, total=181.48s
+      Group 14: cov=0.55s, sample=168.01s, total=224.07s
+      Group 15: cov=0.40s, sample=140.61s, total=203.86s
+      Group 16: cov=0.32s, sample=121.78s, total=188.41s
+      Group 17: cov=0.04s, sample=167.31s, total=237.50s
+      Group 18: cov=0.43s, sample=136.31s, total=215.74s
+      Group 19: cov=0.42s, sample=119.17s, total=198.41s
+  ✓ Manifold generation completed in 3600.46s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 3600.49s
+  ✓ Centralized (mean norm: 0.096843)
+  ✓ Rescaled (diameter: 39.1360 → 2.0000, factor: 19.5680)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.29s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 5 completed in 3600.92s
+      Breakdown: manifold=3600.5s, norm=0.1s
+  ✓ Saved 13 files
+
+[7/45] Generating dataset 6: d=2, D=300, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=2, D=300, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 63.68s
+    ✓ GP setup (inversions): 1.43s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.03s, sample=134.77s, total=134.80s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.03s, sample=122.67s, total=125.83s
+      Group 2: cov=0.02s, sample=119.56s, total=127.96s
+      Group 3: cov=0.67s, sample=158.94s, total=170.48s
+      Group 4: cov=0.35s, sample=140.95s, total=158.60s
+      Group 5: cov=0.59s, sample=127.46s, total=147.29s
+      Group 6: cov=0.03s, sample=123.40s, total=142.91s
+      Group 7: cov=0.03s, sample=141.67s, total=169.37s
+      Group 8: cov=0.28s, sample=149.64s, total=178.17s
+      Group 9: cov=0.07s, sample=123.02s, total=153.56s
+      Group 10: cov=0.02s, sample=146.07s, total=177.26s
+      Group 11: cov=0.03s, sample=139.69s, total=179.79s
+      Group 12: cov=0.04s, sample=133.56s, total=179.27s
+      Group 13: cov=0.80s, sample=144.36s, total=192.42s
+      Group 14: cov=0.56s, sample=121.13s, total=180.12s
+      Group 15: cov=0.07s, sample=159.27s, total=215.03s
+      Group 16: cov=0.07s, sample=123.33s, total=188.79s
+      Group 17: cov=0.08s, sample=133.74s, total=200.87s
+      Group 18: cov=0.08s, sample=142.17s, total=207.48s
+      Group 19: cov=0.12s, sample=155.62s, total=228.35s
+  ✓ Manifold generation completed in 3524.40s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 3524.46s
+  ✓ Centralized (mean norm: 2.212538)
+  ✓ Rescaled (diameter: 40.2341 → 2.0000, factor: 20.1171)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.25s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.05s
+  ✓ Dataset 6 completed in 3525.13s
+      Breakdown: manifold=3524.5s, norm=0.4s
+  ✓ Saved 13 files
+
+[8/45] Generating dataset 7: d=2, D=300, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=2, D=300, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 60.64s
+    ✓ GP setup (inversions): 2.80s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.03s, sample=95.12s, total=95.15s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.11s, sample=114.75s, total=118.25s
+      Group 2: cov=0.10s, sample=151.25s, total=159.27s
+      Group 3: cov=0.60s, sample=160.19s, total=173.76s
+      Group 4: cov=0.26s, sample=135.02s, total=151.61s
+      Group 5: cov=0.05s, sample=125.98s, total=141.90s
+      Group 6: cov=0.11s, sample=144.83s, total=164.47s
+      Group 7: cov=0.03s, sample=195.02s, total=220.82s
+      Group 8: cov=0.36s, sample=130.38s, total=163.29s
+      Group 9: cov=0.49s, sample=124.70s, total=157.82s
+      Group 10: cov=0.03s, sample=157.36s, total=192.53s
+      Group 11: cov=0.03s, sample=186.63s, total=232.89s
+      Group 12: cov=0.66s, sample=129.70s, total=176.55s
+      Group 13: cov=0.26s, sample=130.88s, total=175.64s
+      Group 14: cov=0.05s, sample=209.31s, total=260.80s
+      Group 15: cov=0.19s, sample=121.96s, total=182.38s
+      Group 16: cov=0.27s, sample=130.74s, total=189.01s
+      Group 17: cov=0.02s, sample=70.89s, total=123.32s
+      Group 18: cov=0.03s, sample=146.35s, total=212.83s
+      Group 19: cov=0.52s, sample=133.63s, total=210.43s
+  ✓ Manifold generation completed in 3567.68s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 3567.74s
+  ✓ Centralized (mean norm: 13.254679)
+  ✓ Rescaled (diameter: 26.6435 → 2.0000, factor: 13.3217)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.21s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.05s
+  ✓ Dataset 7 completed in 3568.46s
+      Breakdown: manifold=3567.7s, norm=0.5s
+  ✓ Saved 13 files
+
+[9/45] Generating dataset 8: d=2, D=300, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=2, D=300, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 55.15s
+    ✓ GP setup (inversions): 1.40s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=99.03s, total=99.06s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.41s, sample=143.52s, total=147.13s
+      Group 2: cov=0.17s, sample=150.88s, total=158.40s
+      Group 3: cov=0.47s, sample=129.90s, total=142.81s
+      Group 4: cov=0.09s, sample=123.96s, total=139.63s
+      Group 5: cov=0.29s, sample=121.71s, total=139.61s
+      Group 6: cov=0.03s, sample=151.36s, total=172.83s
+      Group 7: cov=0.42s, sample=150.36s, total=177.50s
+      Group 8: cov=0.02s, sample=125.56s, total=156.48s
+      Group 9: cov=0.03s, sample=122.80s, total=152.67s
+      Group 10: cov=0.44s, sample=143.77s, total=180.64s
+      Group 11: cov=0.07s, sample=149.99s, total=191.85s
+      Group 12: cov=0.02s, sample=131.79s, total=174.69s
+      Group 13: cov=0.38s, sample=142.84s, total=190.60s
+      Group 14: cov=0.07s, sample=133.89s, total=184.98s
+      Group 15: cov=0.03s, sample=149.34s, total=205.24s
+      Group 16: cov=0.44s, sample=133.11s, total=194.66s
+      Group 17: cov=0.15s, sample=121.73s, total=181.55s
+      Group 18: cov=0.22s, sample=123.25s, total=183.55s
+      Group 19: cov=0.34s, sample=166.73s, total=247.00s
+  ✓ Manifold generation completed in 3478.25s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 3478.29s
+  ✓ Centralized (mean norm: 17.079242)
+  ✓ Rescaled (diameter: 3.6381 → 2.0000, factor: 1.8190)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.36s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.05s
+  ✓ Dataset 8 completed in 3479.00s
+      Breakdown: manifold=3478.3s, norm=0.4s
+  ✓ Saved 13 files
+
+[10/45] Generating dataset 9: d=2, D=300, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=2, D=300, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 58.18s
+    ✓ GP setup (inversions): 1.64s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.03s, sample=118.75s, total=118.78s
+      Group 1: cov=0.27s, sample=124.49s, total=128.03s
+      Group 2: cov=0.09s, sample=123.75s, total=130.80s
+      Group 3: cov=0.71s, sample=164.61s, total=176.52s
+      Group 4: cov=0.06s, sample=159.01s, total=175.31s
+      Group 5: cov=0.07s, sample=125.63s, total=146.15s
+      Group 6: cov=0.03s, sample=126.92s, total=146.71s
+      Group 7: cov=0.47s, sample=136.10s, total=165.46s
+      Group 8: cov=0.27s, sample=155.90s, total=185.72s
+      Group 9: cov=0.03s, sample=184.58s, total=219.87s
+      Group 10: cov=0.40s, sample=132.16s, total=169.56s
+      Group 11: cov=0.64s, sample=116.47s, total=158.43s
+      Group 12: cov=0.46s, sample=145.46s, total=187.69s
+      Group 13: cov=0.14s, sample=148.25s, total=194.97s
+      Group 14: cov=0.03s, sample=121.53s, total=176.50s
+      Group 15: cov=0.51s, sample=125.47s, total=185.95s
+      Group 16: cov=0.65s, sample=148.10s, total=201.61s
+      Group 17: cov=0.44s, sample=212.96s, total=277.37s
+      Group 18: cov=0.40s, sample=129.67s, total=198.04s
+      Group 19: cov=0.02s, sample=119.07s, total=186.71s
+  ✓ Manifold generation completed in 3591.73s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 3591.80s
+  ✓ Centralized (mean norm: 16.901518)
+  ✓ Rescaled (diameter: 0.3674 → 2.0000, factor: 0.1837)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.23s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 9 completed in 3592.45s
+      Breakdown: manifold=3591.8s, norm=0.4s
+  ✓ Saved 13 files
+
+[11/45] Generating dataset 10: d=2, D=1000, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=2, D=1000, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 60.63s
+    ✓ GP setup (inversions): 11.63s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.35s, sample=470.46s, total=470.80s
+      Group 1: cov=0.03s, sample=517.78s, total=531.79s
+      Group 2: cov=0.03s, sample=436.66s, total=463.89s
+      Group 3: cov=0.45s, sample=495.27s, total=534.70s
+      Group 4: cov=0.45s, sample=526.52s, total=586.57s
+      Group 5: cov=0.04s, sample=471.38s, total=541.76s
+      Group 6: cov=0.03s, sample=489.28s, total=567.22s
+      Group 7: cov=0.03s, sample=477.15s, total=572.54s
+      Group 8: cov=0.03s, sample=476.01s, total=592.55s
+      Group 9: cov=0.46s, sample=491.13s, total=608.87s
+      Group 10: cov=0.46s, sample=510.23s, total=643.86s
+      Group 11: cov=0.03s, sample=488.72s, total=637.77s
+      Group 12: cov=0.57s, sample=504.47s, total=653.29s
+      Group 13: cov=0.12s, sample=508.26s, total=680.90s
+      Group 14: cov=0.41s, sample=452.96s, total=651.78s
+      Group 15: cov=0.63s, sample=526.29s, total=721.30s
+      Group 16: cov=0.42s, sample=508.11s, total=733.07s
+      Group 17: cov=0.38s, sample=447.43s, total=693.68s
+      Group 18: cov=0.13s, sample=547.18s, total=791.59s
+      Group 19: cov=0.38s, sample=512.48s, total=770.61s
+  ✓ Manifold generation completed in 12532.12s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 12532.42s
+  ✓ Centralized (mean norm: 0.174002)
+  ✓ Rescaled (diameter: 67.9084 → 2.0000, factor: 33.9542)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.77s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.11s
+  ✓ Dataset 10 completed in 12534.15s
+      Breakdown: manifold=12532.4s, norm=1.0s
+  ✓ Saved 13 files
+
+[12/45] Generating dataset 11: d=2, D=1000, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=2, D=1000, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 61.82s
+    ✓ GP setup (inversions): 1.38s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.27s, sample=406.57s, total=406.85s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.09s, sample=606.67s, total=619.47s
+      Group 2: cov=0.28s, sample=428.75s, total=454.20s
+      Group 3: cov=0.03s, sample=512.60s, total=549.67s
+      Group 4: cov=0.22s, sample=469.08s, total=514.97s
+      Group 5: cov=0.41s, sample=601.15s, total=674.11s
+      Group 6: cov=0.50s, sample=497.09s, total=566.47s
+      Group 7: cov=0.62s, sample=429.84s, total=515.94s
+      Group 8: cov=0.03s, sample=697.95s, total=789.64s
+      Group 9: cov=0.70s, sample=462.12s, total=563.69s
+      Group 10: cov=0.17s, sample=477.83s, total=596.77s
+      Group 11: cov=0.05s, sample=658.49s, total=789.73s
+      Group 12: cov=0.58s, sample=438.10s, total=593.26s
+      Group 13: cov=0.47s, sample=506.86s, total=672.13s
+      Group 14: cov=0.03s, sample=569.18s, total=714.82s
+      Group 15: cov=0.03s, sample=477.39s, total=678.30s
+      Group 16: cov=0.32s, sample=504.15s, total=685.55s
+      Group 17: cov=0.47s, sample=525.57s, total=726.69s
+      Group 18: cov=0.09s, sample=488.58s, total=740.21s
+      Group 19: cov=0.07s, sample=455.41s, total=653.88s
+  ✓ Manifold generation completed in 12570.90s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 12571.34s
+  ✓ Centralized (mean norm: 4.304923)
+  ✓ Rescaled (diameter: 67.5166 → 2.0000, factor: 33.7583)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.94s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.12s
+  ✓ Dataset 11 completed in 12573.49s
+      Breakdown: manifold=12571.3s, norm=1.2s
+  ✓ Saved 13 files
+
+[13/45] Generating dataset 12: d=2, D=1000, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=2, D=1000, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 58.87s
+    ✓ GP setup (inversions): 1.62s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.03s, sample=474.92s, total=474.95s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.52s, sample=559.72s, total=573.36s
+      Group 2: cov=0.33s, sample=504.67s, total=529.70s
+      Group 3: cov=0.19s, sample=449.33s, total=484.24s
+      Group 4: cov=0.47s, sample=435.43s, total=485.09s
+      Group 5: cov=0.37s, sample=445.90s, total=501.58s
+      Group 6: cov=0.03s, sample=543.05s, total=612.62s
+      Group 7: cov=0.17s, sample=420.28s, total=503.10s
+      Group 8: cov=0.03s, sample=537.45s, total=633.95s
+      Group 9: cov=0.36s, sample=447.07s, total=554.17s
+      Group 10: cov=0.33s, sample=522.16s, total=641.69s
+      Group 11: cov=0.10s, sample=442.53s, total=560.28s
+      Group 12: cov=0.60s, sample=534.15s, total=687.44s
+      Group 13: cov=0.03s, sample=463.46s, total=609.97s
+      Group 14: cov=0.03s, sample=509.13s, total=695.45s
+      Group 15: cov=0.44s, sample=472.51s, total=649.28s
+      Group 16: cov=0.42s, sample=518.27s, total=711.77s
+      Group 17: cov=0.23s, sample=504.93s, total=694.25s
+      Group 18: cov=0.53s, sample=471.01s, total=681.45s
+      Group 19: cov=0.27s, sample=549.03s, total=788.02s
+  ✓ Manifold generation completed in 12133.69s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 12133.99s
+  ✓ Centralized (mean norm: 26.785465)
+  ✓ Rescaled (diameter: 48.3503 → 2.0000, factor: 24.1752)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.85s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.17s
+  ✓ Dataset 12 completed in 12135.82s
+      Breakdown: manifold=12134.0s, norm=1.0s
+  ✓ Saved 13 files
+
+[14/45] Generating dataset 13: d=2, D=1000, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=2, D=1000, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 58.34s
+    ✓ GP setup (inversions): 1.79s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.15s, sample=320.35s, total=320.50s
+      Group 1: cov=0.62s, sample=600.85s, total=613.15s
+      Group 2: cov=0.05s, sample=474.83s, total=500.33s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 3: cov=0.48s, sample=510.99s, total=546.64s
+      Group 4: cov=0.03s, sample=590.03s, total=639.14s
+      Group 5: cov=0.45s, sample=500.14s, total=560.19s
+      Group 6: cov=0.12s, sample=494.17s, total=570.65s
+      Group 7: cov=0.10s, sample=527.62s, total=600.22s
+      Group 8: cov=0.48s, sample=524.93s, total=624.74s
+      Group 9: cov=0.03s, sample=480.81s, total=580.66s
+      Group 10: cov=0.21s, sample=590.00s, total=732.54s
+      Group 11: cov=0.02s, sample=472.79s, total=595.22s
+      Group 12: cov=0.03s, sample=639.55s, total=777.48s
+      Group 13: cov=0.06s, sample=488.21s, total=636.78s
+      Group 14: cov=0.09s, sample=517.74s, total=685.82s
+      Group 15: cov=0.43s, sample=550.51s, total=728.36s
+      Group 16: cov=0.03s, sample=511.24s, total=697.18s
+      Group 17: cov=0.04s, sample=550.62s, total=738.87s
+      Group 18: cov=0.03s, sample=507.94s, total=756.34s
+      Group 19: cov=0.02s, sample=525.63s, total=739.12s
+  ✓ Manifold generation completed in 12705.98s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 12706.31s
+  ✓ Centralized (mean norm: 32.137312)
+  ✓ Rescaled (diameter: 6.5560 → 2.0000, factor: 3.2780)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.82s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.11s
+  ✓ Dataset 13 completed in 12708.39s
+      Breakdown: manifold=12706.3s, norm=1.3s
+  ✓ Saved 13 files
+
+[15/45] Generating dataset 14: d=2, D=1000, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=2, D=1000, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 62.41s
+    ✓ GP setup (inversions): 1.02s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.12s, sample=520.35s, total=520.48s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.54s, sample=449.29s, total=460.93s
+      Group 2: cov=0.03s, sample=513.00s, total=537.77s
+      Group 3: cov=0.46s, sample=470.50s, total=506.49s
+      Group 4: cov=0.06s, sample=559.09s, total=606.56s
+      Group 5: cov=0.41s, sample=517.95s, total=580.31s
+      Group 6: cov=0.51s, sample=448.49s, total=517.25s
+      Group 7: cov=0.37s, sample=657.79s, total=754.81s
+      Group 8: cov=0.02s, sample=425.21s, total=524.77s
+      Group 9: cov=0.35s, sample=527.55s, total=641.52s
+      Group 10: cov=0.03s, sample=599.34s, total=714.83s
+      Group 11: cov=0.03s, sample=529.38s, total=650.64s
+      Group 12: cov=0.43s, sample=482.80s, total=635.57s
+      Group 13: cov=0.43s, sample=676.76s, total=827.40s
+      Group 14: cov=0.03s, sample=462.14s, total=631.13s
+      Group 15: cov=0.33s, sample=488.99s, total=657.56s
+      Group 16: cov=0.19s, sample=637.58s, total=837.53s
+      Group 17: cov=0.47s, sample=504.73s, total=714.98s
+      Group 18: cov=0.13s, sample=495.16s, total=713.31s
+      Group 19: cov=0.02s, sample=511.75s, total=685.03s
+  ✓ Manifold generation completed in 12783.78s
+  Final shapes: intrinsic (20000, 2), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 12784.12s
+  ✓ Centralized (mean norm: 31.492055)
+  ✓ Rescaled (diameter: 1.1414 → 2.0000, factor: 0.5707)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.76s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.12s
+  ✓ Dataset 14 completed in 12786.29s
+      Breakdown: manifold=12784.1s, norm=1.4s
+  ✓ Saved 13 files
+
+[16/45] Generating dataset 15: d=4, D=100, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=4, D=100, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 106.40s
+    ✓ GP setup (inversions): 2.27s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.06s, sample=98.52s, total=98.58s
+      Group 1: cov=0.03s, sample=95.68s, total=97.27s
+      Group 2: cov=0.44s, sample=96.44s, total=100.63s
+      Group 3: cov=0.35s, sample=87.70s, total=92.68s
+      Group 4: cov=0.41s, sample=84.41s, total=92.04s
+      Group 5: cov=0.04s, sample=68.12s, total=74.90s
+      Group 6: cov=0.37s, sample=69.37s, total=77.89s
+      Group 7: cov=0.53s, sample=62.62s, total=77.11s
+      Group 8: cov=0.54s, sample=57.57s, total=69.43s
+      Group 9: cov=0.47s, sample=65.16s, total=81.03s
+      Group 10: cov=0.54s, sample=78.65s, total=97.44s
+      Group 11: cov=0.07s, sample=74.76s, total=92.41s
+      Group 12: cov=0.14s, sample=76.32s, total=94.43s
+      Group 13: cov=0.04s, sample=72.77s, total=91.16s
+      Group 14: cov=0.04s, sample=75.02s, total=96.31s
+      Group 15: cov=0.53s, sample=67.38s, total=92.54s
+      Group 16: cov=0.28s, sample=71.36s, total=97.22s
+      Group 17: cov=0.05s, sample=67.20s, total=92.09s
+      Group 18: cov=0.05s, sample=68.24s, total=94.93s
+      Group 19: cov=0.05s, sample=67.63s, total=97.96s
+  ✓ Manifold generation completed in 1918.71s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1918.74s
+  ✓ Centralized (mean norm: 0.031383)
+  ✓ Rescaled (diameter: 24.2894 → 2.0000, factor: 12.1447)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.10s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 15 completed in 1918.88s
+      Breakdown: manifold=1918.7s, norm=0.0s
+  ✓ Saved 13 files
+
+[17/45] Generating dataset 16: d=4, D=100, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=4, D=100, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 104.06s
+    ✓ GP setup (inversions): 1.76s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.09s, sample=54.61s, total=54.70s
+      Group 1: cov=0.11s, sample=42.78s, total=44.44s
+      Group 2: cov=0.57s, sample=37.85s, total=40.58s
+      Group 3: cov=0.60s, sample=42.88s, total=48.16s
+      Group 4: cov=0.46s, sample=38.49s, total=45.47s
+      Group 5: cov=0.36s, sample=40.32s, total=46.83s
+      Group 6: cov=0.49s, sample=51.63s, total=62.91s
+      Group 7: cov=0.56s, sample=42.25s, total=53.04s
+      Group 8: cov=0.50s, sample=44.51s, total=54.84s
+      Group 9: cov=0.50s, sample=61.25s, total=78.12s
+      Group 10: cov=0.39s, sample=53.14s, total=71.41s
+      Group 11: cov=0.03s, sample=53.26s, total=68.90s
+      Group 12: cov=0.13s, sample=50.23s, total=66.73s
+      Group 13: cov=0.44s, sample=48.85s, total=68.77s
+      Group 14: cov=0.03s, sample=55.94s, total=78.07s
+      Group 15: cov=0.46s, sample=59.34s, total=86.25s
+      Group 16: cov=0.47s, sample=62.51s, total=93.34s
+      Group 17: cov=0.47s, sample=56.51s, total=86.06s
+      Group 18: cov=0.03s, sample=46.88s, total=75.82s
+      Group 19: cov=0.43s, sample=53.61s, total=88.41s
+  ✓ Manifold generation completed in 1420.49s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1420.52s
+  ✓ Centralized (mean norm: 0.092165)
+  ✓ Rescaled (diameter: 24.9400 → 2.0000, factor: 12.4700)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.12s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.03s
+  ✓ Dataset 16 completed in 1420.68s
+      Breakdown: manifold=1420.5s, norm=0.0s
+  ✓ Saved 13 files
+
+[18/45] Generating dataset 17: d=4, D=100, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=4, D=100, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 103.75s
+    ✓ GP setup (inversions): 1.37s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.03s, sample=51.18s, total=51.21s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.41s, sample=49.77s, total=51.83s
+      Group 2: cov=0.43s, sample=50.05s, total=53.08s
+      Group 3: cov=0.03s, sample=43.25s, total=47.21s
+      Group 4: cov=0.45s, sample=39.27s, total=45.41s
+      Group 5: cov=0.03s, sample=36.90s, total=42.88s
+      Group 6: cov=0.53s, sample=43.59s, total=52.32s
+      Group 7: cov=0.42s, sample=44.42s, total=55.70s
+      Group 8: cov=0.46s, sample=50.73s, total=64.07s
+      Group 9: cov=0.36s, sample=50.86s, total=63.88s
+      Group 10: cov=0.03s, sample=37.06s, total=51.89s
+      Group 11: cov=0.14s, sample=41.30s, total=54.54s
+      Group 12: cov=0.36s, sample=49.16s, total=65.55s
+      Group 13: cov=0.47s, sample=44.85s, total=64.20s
+      Group 14: cov=0.20s, sample=49.93s, total=70.23s
+      Group 15: cov=0.44s, sample=63.74s, total=88.03s
+      Group 16: cov=0.35s, sample=44.08s, total=71.90s
+      Group 17: cov=0.04s, sample=49.95s, total=72.81s
+      Group 18: cov=0.45s, sample=56.40s, total=90.82s
+      Group 19: cov=0.51s, sample=54.20s, total=87.23s
+  ✓ Manifold generation completed in 1351.04s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1351.07s
+  ✓ Centralized (mean norm: 7.259829)
+  ✓ Rescaled (diameter: 17.5925 → 2.0000, factor: 8.7962)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.11s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 17 completed in 1351.24s
+      Breakdown: manifold=1351.1s, norm=0.1s
+  ✓ Saved 13 files
+
+[19/45] Generating dataset 18: d=4, D=100, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=4, D=100, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 103.73s
+    ✓ GP setup (inversions): 4.25s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.34s, sample=39.08s, total=39.42s
+      Group 1: cov=0.12s, sample=52.48s, total=53.88s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 2: cov=0.14s, sample=54.47s, total=57.53s
+      Group 3: cov=0.34s, sample=55.26s, total=60.29s
+      Group 4: cov=0.56s, sample=54.98s, total=62.96s
+      Group 5: cov=0.22s, sample=49.97s, total=56.71s
+      Group 6: cov=0.58s, sample=51.56s, total=60.66s
+      Group 7: cov=0.05s, sample=37.81s, total=45.79s
+      Group 8: cov=0.29s, sample=41.15s, total=53.67s
+      Group 9: cov=0.10s, sample=38.65s, total=51.53s
+      Group 10: cov=0.02s, sample=39.32s, total=50.73s
+      Group 11: cov=0.02s, sample=37.35s, total=49.12s
+      Group 12: cov=0.03s, sample=47.99s, total=62.83s
+      Group 13: cov=0.41s, sample=48.35s, total=65.94s
+      Group 14: cov=0.03s, sample=49.25s, total=68.31s
+      Group 15: cov=0.35s, sample=52.16s, total=73.58s
+      Group 16: cov=0.34s, sample=53.23s, total=75.82s
+      Group 17: cov=0.49s, sample=53.56s, total=79.47s
+      Group 18: cov=0.04s, sample=54.54s, total=83.08s
+      Group 19: cov=0.41s, sample=52.83s, total=87.66s
+  ✓ Manifold generation completed in 1348.73s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1348.75s
+  ✓ Centralized (mean norm: 10.416708)
+  ✓ Rescaled (diameter: 2.3123 → 2.0000, factor: 1.1561)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.07s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 18 completed in 1348.85s
+      Breakdown: manifold=1348.8s, norm=0.0s
+  ✓ Saved 13 files
+
+[20/45] Generating dataset 19: d=4, D=100, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=4, D=100, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 104.54s
+    ✓ GP setup (inversions): 2.83s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.10s, sample=42.28s, total=42.38s
+      Group 1: cov=0.35s, sample=52.72s, total=54.98s
+      Group 2: cov=0.34s, sample=55.35s, total=58.27s
+      Group 3: cov=0.03s, sample=57.09s, total=61.98s
+      Group 4: cov=0.13s, sample=58.26s, total=64.07s
+      Group 5: cov=0.47s, sample=59.72s, total=69.33s
+      Group 6: cov=0.03s, sample=53.53s, total=61.29s
+      Group 7: cov=0.23s, sample=55.19s, total=65.45s
+      Group 8: cov=0.22s, sample=53.33s, total=64.12s
+      Group 9: cov=0.03s, sample=58.13s, total=69.70s
+      Group 10: cov=0.14s, sample=47.13s, total=62.12s
+      Group 11: cov=0.09s, sample=50.95s, total=64.93s
+      Group 12: cov=0.50s, sample=50.26s, total=72.83s
+      Group 13: cov=0.03s, sample=44.26s, total=60.02s
+      Group 14: cov=0.16s, sample=43.29s, total=59.67s
+      Group 15: cov=0.26s, sample=55.35s, total=74.84s
+      Group 16: cov=0.03s, sample=61.39s, total=84.71s
+      Group 17: cov=0.03s, sample=52.44s, total=79.31s
+      Group 18: cov=0.15s, sample=53.09s, total=78.49s
+      Group 19: cov=0.14s, sample=58.44s, total=83.64s
+  ✓ Manifold generation completed in 1441.07s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 1441.10s
+  ✓ Centralized (mean norm: 11.404457)
+  ✓ Rescaled (diameter: 0.2160 → 2.0000, factor: 0.1080)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.10s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 19 completed in 1441.26s
+      Breakdown: manifold=1441.1s, norm=0.1s
+  ✓ Saved 13 files
+
+[21/45] Generating dataset 20: d=4, D=300, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=4, D=300, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 104.90s
+    ✓ GP setup (inversions): 10.30s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.05s, sample=293.88s, total=293.93s
+      Group 1: cov=0.22s, sample=287.76s, total=292.11s
+      Group 2: cov=0.24s, sample=249.87s, total=258.53s
+      Group 3: cov=0.03s, sample=210.08s, total=222.36s
+      Group 4: cov=0.13s, sample=314.24s, total=329.80s
+      Group 5: cov=0.04s, sample=264.17s, total=284.06s
+      Group 6: cov=0.36s, sample=255.65s, total=282.07s
+      Group 7: cov=0.09s, sample=236.94s, total=265.60s
+      Group 8: cov=0.08s, sample=195.64s, total=225.27s
+      Group 9: cov=0.03s, sample=207.62s, total=243.82s
+      Group 10: cov=0.51s, sample=282.93s, total=327.04s
+      Group 11: cov=0.06s, sample=241.03s, total=298.05s
+      Group 12: cov=0.29s, sample=216.74s, total=269.59s
+      Group 13: cov=0.43s, sample=201.06s, total=258.41s
+      Group 14: cov=0.04s, sample=170.93s, total=224.03s
+      Group 15: cov=0.06s, sample=210.66s, total=268.19s
+      Group 16: cov=0.05s, sample=252.99s, total=325.22s
+      Group 17: cov=0.51s, sample=252.61s, total=334.39s
+      Group 18: cov=0.33s, sample=214.81s, total=292.25s
+      Group 19: cov=0.37s, sample=176.46s, total=251.22s
+  ✓ Manifold generation completed in 5664.05s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 5664.09s
+  ✓ Centralized (mean norm: 0.049951)
+  ✓ Rescaled (diameter: 39.9886 → 2.0000, factor: 19.9943)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.26s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 20 completed in 5664.55s
+      Breakdown: manifold=5664.1s, norm=0.2s
+  ✓ Saved 13 files
+
+[22/45] Generating dataset 21: d=4, D=300, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=4, D=300, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 102.66s
+    ✓ GP setup (inversions): 1.03s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.03s, sample=126.56s, total=126.59s
+      Group 1: cov=0.52s, sample=64.46s, total=69.20s
+      Group 2: cov=0.02s, sample=54.18s, total=57.33s
+      Group 3: cov=0.02s, sample=53.86s, total=58.60s
+      Group 4: cov=0.02s, sample=57.15s, total=63.48s
+      Group 5: cov=0.02s, sample=58.60s, total=67.69s
+      Group 6: cov=0.02s, sample=56.00s, total=66.84s
+      Group 7: cov=0.02s, sample=53.84s, total=64.86s
+      Group 8: cov=0.02s, sample=54.14s, total=66.81s
+      Group 9: cov=0.02s, sample=54.10s, total=68.28s
+      Group 10: cov=0.02s, sample=53.98s, total=69.76s
+      Group 11: cov=0.02s, sample=54.15s, total=71.54s
+      Group 12: cov=0.02s, sample=54.18s, total=73.19s
+      Group 13: cov=0.02s, sample=60.23s, total=82.42s
+      Group 14: cov=0.03s, sample=63.34s, total=89.70s
+      Group 15: cov=0.02s, sample=57.30s, total=85.67s
+      Group 16: cov=0.02s, sample=56.26s, total=83.12s
+      Group 17: cov=0.02s, sample=56.07s, total=84.77s
+      Group 18: cov=0.02s, sample=57.49s, total=87.78s
+      Group 19: cov=0.02s, sample=55.30s, total=86.39s
+  ✓ Manifold generation completed in 1629.48s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1629.52s
+  ✓ Centralized (mean norm: 0.174552)
+  ✓ Rescaled (diameter: 39.2266 → 2.0000, factor: 19.6133)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.21s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 21 completed in 1629.82s
+      Breakdown: manifold=1629.5s, norm=0.1s
+  ✓ Saved 13 files
+
+[23/45] Generating dataset 22: d=4, D=300, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=4, D=300, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.79s
+    ✓ GP setup (inversions): 0.64s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=47.44s, total=47.45s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=49.96s, total=51.56s
+      Group 2: cov=0.02s, sample=52.75s, total=56.46s
+      Group 3: cov=0.02s, sample=52.92s, total=58.44s
+      Group 4: cov=0.02s, sample=51.69s, total=58.98s
+      Group 5: cov=0.02s, sample=48.87s, total=56.73s
+      Group 6: cov=0.02s, sample=48.92s, total=58.35s
+      Group 7: cov=0.02s, sample=48.99s, total=59.98s
+      Group 8: cov=0.02s, sample=49.36s, total=61.94s
+      Group 9: cov=0.02s, sample=51.49s, total=65.81s
+      Group 10: cov=0.02s, sample=52.68s, total=68.57s
+      Group 11: cov=0.02s, sample=50.82s, total=68.46s
+      Group 12: cov=0.02s, sample=52.31s, total=71.09s
+      Group 13: cov=0.02s, sample=54.31s, total=78.11s
+      Group 14: cov=0.02s, sample=53.87s, total=79.82s
+      Group 15: cov=0.02s, sample=50.09s, total=73.91s
+      Group 16: cov=0.02s, sample=49.79s, total=74.82s
+      Group 17: cov=0.02s, sample=52.16s, total=78.75s
+      Group 18: cov=0.02s, sample=52.45s, total=80.61s
+      Group 19: cov=0.02s, sample=52.17s, total=82.02s
+  ✓ Manifold generation completed in 1429.77s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1429.81s
+  ✓ Centralized (mean norm: 11.860531)
+  ✓ Rescaled (diameter: 29.5147 → 2.0000, factor: 14.7574)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.21s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.05s
+  ✓ Dataset 22 completed in 1430.11s
+      Breakdown: manifold=1429.8s, norm=0.1s
+  ✓ Saved 13 files
+
+[24/45] Generating dataset 23: d=4, D=300, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=4, D=300, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.71s
+    ✓ GP setup (inversions): 0.58s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=36.77s, total=36.78s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=52.14s, total=53.84s
+      Group 2: cov=0.02s, sample=54.49s, total=58.06s
+      Group 3: cov=0.02s, sample=54.34s, total=59.84s
+      Group 4: cov=0.02s, sample=54.43s, total=61.73s
+      Group 5: cov=0.02s, sample=50.81s, total=59.91s
+      Group 6: cov=0.02s, sample=50.24s, total=60.12s
+      Group 7: cov=0.02s, sample=49.98s, total=61.56s
+      Group 8: cov=0.02s, sample=50.32s, total=63.56s
+      Group 9: cov=0.02s, sample=50.37s, total=65.29s
+      Group 10: cov=0.02s, sample=51.31s, total=67.86s
+      Group 11: cov=0.02s, sample=50.72s, total=68.85s
+      Group 12: cov=0.02s, sample=50.33s, total=69.08s
+      Group 13: cov=0.02s, sample=54.47s, total=77.33s
+      Group 14: cov=0.02s, sample=54.96s, total=80.17s
+      Group 15: cov=0.02s, sample=53.65s, total=81.17s
+      Group 16: cov=0.02s, sample=53.51s, total=78.47s
+      Group 17: cov=0.02s, sample=52.36s, total=78.98s
+      Group 18: cov=0.02s, sample=51.76s, total=80.44s
+      Group 19: cov=0.02s, sample=54.53s, total=84.76s
+  ✓ Manifold generation completed in 1445.58s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1445.62s
+  ✓ Centralized (mean norm: 18.288169)
+  ✓ Rescaled (diameter: 3.7824 → 2.0000, factor: 1.8912)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.21s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 23 completed in 1445.92s
+      Breakdown: manifold=1445.6s, norm=0.1s
+  ✓ Saved 13 files
+
+[25/45] Generating dataset 24: d=4, D=300, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=4, D=300, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.60s
+    ✓ GP setup (inversions): 0.64s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=36.80s, total=36.82s
+      Group 1: cov=0.02s, sample=54.25s, total=55.95s
+      Group 2: cov=0.02s, sample=55.26s, total=58.42s
+      Group 3: cov=0.02s, sample=57.27s, total=62.68s
+      Group 4: cov=0.02s, sample=57.77s, total=65.08s
+      Group 5: cov=0.02s, sample=57.25s, total=66.38s
+      Group 6: cov=0.02s, sample=54.00s, total=65.01s
+      Group 7: cov=0.02s, sample=53.28s, total=65.25s
+      Group 8: cov=0.02s, sample=53.73s, total=67.14s
+      Group 9: cov=0.02s, sample=54.23s, total=69.33s
+      Group 10: cov=0.02s, sample=53.83s, total=70.65s
+      Group 11: cov=0.02s, sample=53.98s, total=71.40s
+      Group 12: cov=0.02s, sample=54.19s, total=72.90s
+      Group 13: cov=0.02s, sample=60.67s, total=81.04s
+      Group 14: cov=0.02s, sample=56.98s, total=82.15s
+      Group 15: cov=0.02s, sample=57.19s, total=84.31s
+      Group 16: cov=0.02s, sample=55.78s, total=85.01s
+      Group 17: cov=0.02s, sample=54.73s, total=81.46s
+      Group 18: cov=0.02s, sample=56.21s, total=84.86s
+      Group 19: cov=0.02s, sample=55.05s, total=85.52s
+  ✓ Manifold generation completed in 1509.09s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1509.13s
+  ✓ Centralized (mean norm: 17.221871)
+  ✓ Rescaled (diameter: 0.3882 → 2.0000, factor: 0.1941)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.21s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 24 completed in 1509.43s
+      Breakdown: manifold=1509.1s, norm=0.1s
+  ✓ Saved 13 files
+
+[26/45] Generating dataset 25: d=4, D=1000, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=4, D=1000, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.69s
+    ✓ GP setup (inversions): 0.70s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=373.67s, total=373.70s
+      Group 1: cov=0.02s, sample=351.39s, total=357.87s
+      Group 2: cov=0.02s, sample=356.73s, total=370.05s
+      Group 3: cov=0.03s, sample=331.21s, total=351.43s
+      Group 4: cov=0.02s, sample=335.00s, total=359.81s
+      Group 5: cov=0.03s, sample=307.94s, total=340.64s
+      Group 6: cov=0.02s, sample=314.89s, total=352.03s
+      Group 7: cov=0.03s, sample=302.87s, total=349.03s
+      Group 8: cov=0.02s, sample=304.13s, total=354.74s
+      Group 9: cov=0.03s, sample=312.18s, total=372.08s
+      Group 10: cov=0.03s, sample=305.52s, total=372.26s
+      Group 11: cov=0.03s, sample=299.89s, total=372.59s
+      Group 12: cov=0.03s, sample=307.38s, total=385.76s
+      Group 13: cov=0.03s, sample=294.09s, total=377.34s
+      Group 14: cov=0.03s, sample=292.42s, total=384.91s
+      Group 15: cov=0.03s, sample=277.40s, total=377.03s
+      Group 16: cov=0.03s, sample=280.32s, total=384.46s
+      Group 17: cov=0.03s, sample=276.45s, total=391.59s
+      Group 18: cov=0.03s, sample=272.53s, total=388.60s
+      Group 19: cov=0.03s, sample=278.07s, total=399.77s
+  ✓ Manifold generation completed in 7513.67s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 7513.77s
+  ✓ Centralized (mean norm: 0.094378)
+  ✓ Rescaled (diameter: 66.9250 → 2.0000, factor: 33.4625)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.71s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.11s
+  ✓ Dataset 25 completed in 7514.87s
+      Breakdown: manifold=7513.8s, norm=0.4s
+  ✓ Saved 13 files
+
+[27/45] Generating dataset 26: d=4, D=1000, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=4, D=1000, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.37s
+    ✓ GP setup (inversions): 0.64s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=187.83s, total=187.85s
+      Group 1: cov=0.02s, sample=187.10s, total=193.28s
+      Group 2: cov=0.02s, sample=190.30s, total=201.58s
+      Group 3: cov=0.02s, sample=190.84s, total=207.72s
+      Group 4: cov=0.02s, sample=205.28s, total=229.40s
+      Group 5: cov=0.02s, sample=189.04s, total=216.05s
+      Group 6: cov=0.02s, sample=190.17s, total=221.80s
+      Group 7: cov=0.02s, sample=193.54s, total=236.02s
+      Group 8: cov=0.02s, sample=178.54s, total=222.05s
+      Group 9: cov=0.02s, sample=185.11s, total=231.75s
+      Group 10: cov=0.03s, sample=190.22s, total=252.53s
+      Group 11: cov=0.02s, sample=186.37s, total=247.17s
+      Group 12: cov=0.02s, sample=189.24s, total=254.82s
+      Group 13: cov=0.02s, sample=193.05s, total=270.99s
+      Group 14: cov=0.02s, sample=186.62s, total=260.35s
+      Group 15: cov=0.02s, sample=188.97s, total=266.73s
+      Group 16: cov=0.02s, sample=182.64s, total=276.46s
+      Group 17: cov=0.02s, sample=188.00s, total=284.07s
+      Group 18: cov=0.02s, sample=193.13s, total=298.38s
+      Group 19: cov=0.02s, sample=181.16s, total=287.37s
+  ✓ Manifold generation completed in 4944.93s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4945.03s
+  ✓ Centralized (mean norm: 0.310199)
+  ✓ Rescaled (diameter: 68.3963 → 2.0000, factor: 34.1981)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.48s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 26 completed in 4945.88s
+      Breakdown: manifold=4945.0s, norm=0.4s
+  ✓ Saved 13 files
+
+[28/45] Generating dataset 27: d=4, D=1000, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=4, D=1000, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.15s
+    ✓ GP setup (inversions): 0.74s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=175.85s, total=175.88s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=172.66s, total=177.83s
+      Group 2: cov=0.02s, sample=173.13s, total=185.24s
+      Group 3: cov=0.02s, sample=170.81s, total=186.11s
+      Group 4: cov=0.02s, sample=172.97s, total=193.78s
+      Group 5: cov=0.02s, sample=177.32s, total=204.73s
+      Group 6: cov=0.02s, sample=172.27s, total=208.38s
+      Group 7: cov=0.02s, sample=163.93s, total=200.06s
+      Group 8: cov=0.02s, sample=167.54s, total=209.15s
+      Group 9: cov=0.02s, sample=180.32s, total=234.69s
+      Group 10: cov=0.02s, sample=170.32s, total=222.98s
+      Group 11: cov=0.02s, sample=167.48s, total=228.90s
+      Group 12: cov=0.02s, sample=176.29s, total=242.47s
+      Group 13: cov=0.02s, sample=168.72s, total=246.06s
+      Group 14: cov=0.02s, sample=171.67s, total=244.41s
+      Group 15: cov=0.02s, sample=167.16s, total=245.89s
+      Group 16: cov=0.02s, sample=172.88s, total=256.78s
+      Group 17: cov=0.02s, sample=170.60s, total=263.03s
+      Group 18: cov=0.02s, sample=171.48s, total=268.58s
+      Group 19: cov=0.02s, sample=170.54s, total=276.40s
+  ✓ Manifold generation completed in 4569.87s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4569.98s
+  ✓ Centralized (mean norm: 23.650854)
+  ✓ Rescaled (diameter: 52.1707 → 2.0000, factor: 26.0853)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.48s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 27 completed in 4570.83s
+      Breakdown: manifold=4570.0s, norm=0.4s
+  ✓ Saved 13 files
+
+[29/45] Generating dataset 28: d=4, D=1000, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=4, D=1000, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.72s
+    ✓ GP setup (inversions): 0.58s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=123.83s, total=123.85s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=186.59s, total=191.88s
+      Group 2: cov=0.02s, sample=185.42s, total=195.70s
+      Group 3: cov=0.02s, sample=175.77s, total=192.72s
+      Group 4: cov=0.02s, sample=180.20s, total=201.34s
+      Group 5: cov=0.02s, sample=174.50s, total=200.35s
+      Group 6: cov=0.02s, sample=200.74s, total=233.49s
+      Group 7: cov=0.02s, sample=185.43s, total=224.28s
+      Group 8: cov=0.02s, sample=179.68s, total=224.27s
+      Group 9: cov=0.02s, sample=179.39s, total=230.16s
+      Group 10: cov=0.02s, sample=183.87s, total=243.72s
+      Group 11: cov=0.02s, sample=183.30s, total=243.02s
+      Group 12: cov=0.02s, sample=181.40s, total=246.68s
+      Group 13: cov=0.02s, sample=179.81s, total=251.68s
+      Group 14: cov=0.02s, sample=176.97s, total=254.37s
+      Group 15: cov=0.02s, sample=185.06s, total=274.86s
+      Group 16: cov=0.02s, sample=182.88s, total=270.68s
+      Group 17: cov=0.02s, sample=198.79s, total=288.57s
+      Group 18: cov=0.02s, sample=177.46s, total=276.43s
+      Group 19: cov=0.02s, sample=183.70s, total=283.03s
+  ✓ Manifold generation completed in 4748.89s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4749.03s
+  ✓ Centralized (mean norm: 32.249172)
+  ✓ Rescaled (diameter: 6.5718 → 2.0000, factor: 3.2859)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.48s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 28 completed in 4749.90s
+      Breakdown: manifold=4749.0s, norm=0.4s
+  ✓ Saved 13 files
+
+[30/45] Generating dataset 29: d=4, D=1000, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=4, D=1000, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.00s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.07s
+    ✓ GP setup (inversions): 0.68s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=122.74s, total=122.77s
+      Group 1: cov=0.02s, sample=179.29s, total=184.98s
+      Group 2: cov=0.02s, sample=181.14s, total=191.49s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 3: cov=0.02s, sample=192.20s, total=207.64s
+      Group 4: cov=0.03s, sample=187.44s, total=211.64s
+      Group 5: cov=0.02s, sample=183.04s, total=209.69s
+      Group 6: cov=0.02s, sample=191.40s, total=223.61s
+      Group 7: cov=0.02s, sample=184.98s, total=226.65s
+      Group 8: cov=0.02s, sample=175.35s, total=216.48s
+      Group 9: cov=0.02s, sample=194.65s, total=244.37s
+      Group 10: cov=0.03s, sample=186.49s, total=248.70s
+      Group 11: cov=0.02s, sample=175.01s, total=232.09s
+      Group 12: cov=0.02s, sample=180.51s, total=243.63s
+      Group 13: cov=0.02s, sample=186.26s, total=264.44s
+      Group 14: cov=0.02s, sample=181.72s, total=254.25s
+      Group 15: cov=0.02s, sample=186.05s, total=265.20s
+      Group 16: cov=0.02s, sample=186.62s, total=280.06s
+      Group 17: cov=0.02s, sample=178.46s, total=272.31s
+      Group 18: cov=0.02s, sample=187.68s, total=282.99s
+      Group 19: cov=0.02s, sample=183.66s, total=290.86s
+  ✓ Manifold generation completed in 4772.25s
+  Final shapes: intrinsic (20000, 4), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4772.38s
+  ✓ Centralized (mean norm: 31.640363)
+  ✓ Rescaled (diameter: 0.6622 → 2.0000, factor: 0.3311)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.73s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 29 completed in 4773.51s
+      Breakdown: manifold=4772.4s, norm=0.4s
+  ✓ Saved 13 files
+
+[31/45] Generating dataset 30: d=8, D=100, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=8, D=100, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.36s
+    ✓ GP setup (inversions): 0.58s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.02s, sample=19.53s, total=19.55s
+      Group 1: cov=0.02s, sample=15.64s, total=16.24s
+      Group 2: cov=0.02s, sample=14.08s, total=15.27s
+      Group 3: cov=0.02s, sample=14.45s, total=16.22s
+      Group 4: cov=0.02s, sample=14.21s, total=16.59s
+      Group 5: cov=0.02s, sample=14.32s, total=17.28s
+      Group 6: cov=0.02s, sample=14.49s, total=18.07s
+      Group 7: cov=0.02s, sample=13.75s, total=17.88s
+      Group 8: cov=0.02s, sample=15.44s, total=20.15s
+      Group 9: cov=0.02s, sample=14.71s, total=19.77s
+      Group 10: cov=0.02s, sample=12.48s, total=18.05s
+      Group 11: cov=0.02s, sample=13.62s, total=19.84s
+      Group 12: cov=0.02s, sample=14.37s, total=21.08s
+      Group 13: cov=0.02s, sample=13.99s, total=21.37s
+      Group 14: cov=0.02s, sample=14.48s, total=22.27s
+      Group 15: cov=0.02s, sample=15.57s, total=24.73s
+      Group 16: cov=0.02s, sample=15.09s, total=24.77s
+      Group 17: cov=0.02s, sample=15.12s, total=25.42s
+      Group 18: cov=0.02s, sample=15.05s, total=25.94s
+      Group 19: cov=0.02s, sample=14.81s, total=26.28s
+  ✓ Manifold generation completed in 505.19s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 505.21s
+  ✓ Centralized (mean norm: 0.028157)
+  ✓ Rescaled (diameter: 24.7260 → 2.0000, factor: 12.3630)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.06s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 30 completed in 505.30s
+      Breakdown: manifold=505.2s, norm=0.0s
+  ✓ Saved 13 files
+
+[32/45] Generating dataset 31: d=8, D=100, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=8, D=100, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.51s
+    ✓ GP setup (inversions): 0.71s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.02s, sample=17.21s, total=17.23s
+      Group 1: cov=0.02s, sample=24.25s, total=24.93s
+      Group 2: cov=0.02s, sample=24.27s, total=25.58s
+      Group 3: cov=0.02s, sample=24.12s, total=26.06s
+      Group 4: cov=0.02s, sample=24.10s, total=26.68s
+      Group 5: cov=0.02s, sample=23.13s, total=26.02s
+      Group 6: cov=0.02s, sample=22.96s, total=26.40s
+      Group 7: cov=0.02s, sample=22.96s, total=26.99s
+      Group 8: cov=0.02s, sample=23.21s, total=27.80s
+      Group 9: cov=0.02s, sample=22.89s, total=28.08s
+      Group 10: cov=0.02s, sample=23.67s, total=29.48s
+      Group 11: cov=0.02s, sample=23.35s, total=29.78s
+      Group 12: cov=0.02s, sample=22.66s, total=29.54s
+      Group 13: cov=0.02s, sample=22.99s, total=30.51s
+      Group 14: cov=0.02s, sample=23.15s, total=31.33s
+      Group 15: cov=0.02s, sample=23.68s, total=32.47s
+      Group 16: cov=0.02s, sample=23.10s, total=32.50s
+      Group 17: cov=0.02s, sample=22.88s, total=33.03s
+      Group 18: cov=0.02s, sample=22.78s, total=33.71s
+      Group 19: cov=0.02s, sample=22.94s, total=33.62s
+  ✓ Manifold generation completed in 670.52s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 670.55s
+  ✓ Centralized (mean norm: 0.030186)
+  ✓ Rescaled (diameter: 24.8365 → 2.0000, factor: 12.4183)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.06s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 31 completed in 670.63s
+      Breakdown: manifold=670.5s, norm=0.0s
+  ✓ Saved 13 files
+
+[33/45] Generating dataset 32: d=8, D=100, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=8, D=100, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.83s
+    ✓ GP setup (inversions): 0.67s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.02s, sample=18.60s, total=18.62s
+      Group 1: cov=0.02s, sample=21.92s, total=22.51s
+      Group 2: cov=0.02s, sample=23.13s, total=24.30s
+      Group 3: cov=0.02s, sample=24.25s, total=26.25s
+      Group 4: cov=0.03s, sample=24.75s, total=27.48s
+      Group 5: cov=0.03s, sample=24.84s, total=28.16s
+      Group 6: cov=0.03s, sample=25.14s, total=29.18s
+      Group 7: cov=0.03s, sample=24.95s, total=29.67s
+      Group 8: cov=0.03s, sample=24.93s, total=30.46s
+      Group 9: cov=0.03s, sample=24.64s, total=30.73s
+      Group 10: cov=0.03s, sample=24.71s, total=31.44s
+      Group 11: cov=0.03s, sample=24.75s, total=32.25s
+      Group 12: cov=0.02s, sample=23.58s, total=31.88s
+      Group 13: cov=0.02s, sample=23.45s, total=31.49s
+      Group 14: cov=0.02s, sample=23.24s, total=31.59s
+      Group 15: cov=0.02s, sample=23.85s, total=32.91s
+      Group 16: cov=0.02s, sample=23.70s, total=33.37s
+      Group 17: cov=0.02s, sample=23.61s, total=33.82s
+      Group 18: cov=0.02s, sample=23.71s, total=34.55s
+      Group 19: cov=0.02s, sample=23.93s, total=35.39s
+  ✓ Manifold generation completed in 694.09s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 694.12s
+  ✓ Centralized (mean norm: 6.054361)
+  ✓ Rescaled (diameter: 18.6851 → 2.0000, factor: 9.3425)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.08s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 32 completed in 694.24s
+      Breakdown: manifold=694.1s, norm=0.0s
+  ✓ Saved 13 files
+
+[34/45] Generating dataset 33: d=8, D=100, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=8, D=100, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.07s
+    ✓ GP setup (inversions): 0.62s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.02s, sample=14.37s, total=14.39s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=18.29s, total=18.89s
+      Group 2: cov=0.02s, sample=18.48s, total=19.73s
+      Group 3: cov=0.02s, sample=18.72s, total=20.61s
+      Group 4: cov=0.02s, sample=18.90s, total=21.15s
+      Group 5: cov=0.02s, sample=19.47s, total=22.25s
+      Group 6: cov=0.02s, sample=19.14s, total=22.68s
+      Group 7: cov=0.02s, sample=19.13s, total=23.33s
+      Group 8: cov=0.02s, sample=19.09s, total=23.85s
+      Group 9: cov=0.02s, sample=18.90s, total=24.22s
+      Group 10: cov=0.02s, sample=19.10s, total=25.00s
+      Group 11: cov=0.02s, sample=18.93s, total=25.59s
+      Group 12: cov=0.02s, sample=19.44s, total=26.88s
+      Group 13: cov=0.02s, sample=19.79s, total=28.41s
+      Group 14: cov=0.02s, sample=19.91s, total=29.10s
+      Group 15: cov=0.02s, sample=19.92s, total=29.91s
+      Group 16: cov=0.03s, sample=20.76s, total=31.19s
+      Group 17: cov=0.03s, sample=21.87s, total=33.13s
+      Group 18: cov=0.03s, sample=21.98s, total=34.04s
+      Group 19: cov=0.03s, sample=21.98s, total=34.56s
+  ✓ Manifold generation completed in 607.11s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 607.14s
+  ✓ Centralized (mean norm: 10.189000)
+  ✓ Rescaled (diameter: 2.2060 → 2.0000, factor: 1.1030)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.08s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 33 completed in 607.25s
+      Breakdown: manifold=607.1s, norm=0.0s
+  ✓ Saved 13 files
+
+[35/45] Generating dataset 34: d=8, D=100, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=8, D=100, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.47s
+    ✓ GP setup (inversions): 0.72s
+    Starting GP generation for 20 groups × 100 functions...
+      Group 0: cov=0.02s, sample=14.65s, total=14.68s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=21.92s, total=22.59s
+      Group 2: cov=0.02s, sample=22.26s, total=23.62s
+      Group 3: cov=0.02s, sample=21.58s, total=23.38s
+      Group 4: cov=0.02s, sample=21.20s, total=23.63s
+      Group 5: cov=0.02s, sample=21.10s, total=24.12s
+      Group 6: cov=0.02s, sample=21.45s, total=25.11s
+      Group 7: cov=0.02s, sample=21.67s, total=25.99s
+      Group 8: cov=0.02s, sample=21.53s, total=26.32s
+      Group 9: cov=0.02s, sample=21.53s, total=27.04s
+      Group 10: cov=0.02s, sample=21.70s, total=27.81s
+      Group 11: cov=0.02s, sample=21.40s, total=28.15s
+      Group 12: cov=0.03s, sample=21.53s, total=28.76s
+      Group 13: cov=0.02s, sample=21.02s, total=28.78s
+      Group 14: cov=0.02s, sample=21.04s, total=29.32s
+      Group 15: cov=0.02s, sample=21.60s, total=30.54s
+      Group 16: cov=0.02s, sample=21.62s, total=31.22s
+      Group 17: cov=0.02s, sample=20.95s, total=31.08s
+      Group 18: cov=0.02s, sample=20.97s, total=31.69s
+      Group 19: cov=0.02s, sample=21.07s, total=32.31s
+  ✓ Manifold generation completed in 634.86s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 100)
+  ✓ Raw generation: (20000, 100) in 634.89s
+  ✓ Centralized (mean norm: 9.676764)
+  ✓ Rescaled (diameter: 0.2454 → 2.0000, factor: 0.1227)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 100) in 0.08s
+  ✓ Train/test split: (16000, 100)/(4000, 100) in 0.02s
+  ✓ Dataset 34 completed in 634.99s
+      Breakdown: manifold=634.9s, norm=0.0s
+  ✓ Saved 13 files
+
+[36/45] Generating dataset 35: d=8, D=300, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=8, D=300, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.22s
+    ✓ GP setup (inversions): 0.68s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=42.48s, total=42.50s
+      Group 1: cov=0.02s, sample=38.48s, total=40.13s
+      Group 2: cov=0.01s, sample=39.97s, total=42.18s
+      Group 3: cov=0.02s, sample=45.91s, total=50.67s
+      Group 4: cov=0.02s, sample=44.95s, total=51.23s
+      Group 5: cov=0.02s, sample=38.04s, total=46.26s
+      Group 6: cov=0.02s, sample=44.99s, total=55.42s
+      Group 7: cov=0.02s, sample=42.63s, total=54.13s
+      Group 8: cov=0.02s, sample=42.46s, total=55.49s
+      Group 9: cov=0.02s, sample=40.82s, total=55.86s
+      Group 10: cov=0.02s, sample=42.79s, total=58.62s
+      Group 11: cov=0.02s, sample=43.81s, total=61.22s
+      Group 12: cov=0.02s, sample=43.46s, total=62.30s
+      Group 13: cov=0.02s, sample=39.33s, total=59.92s
+      Group 14: cov=0.02s, sample=43.50s, total=65.77s
+      Group 15: cov=0.02s, sample=43.60s, total=67.28s
+      Group 16: cov=0.02s, sample=41.06s, total=66.28s
+      Group 17: cov=0.02s, sample=44.15s, total=71.35s
+      Group 18: cov=0.02s, sample=40.66s, total=68.89s
+      Group 19: cov=0.02s, sample=41.36s, total=70.76s
+  ✓ Manifold generation completed in 1244.64s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1244.68s
+  ✓ Centralized (mean norm: 0.051169)
+  ✓ Rescaled (diameter: 38.9734 → 2.0000, factor: 19.4867)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.18s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 35 completed in 1244.93s
+      Breakdown: manifold=1244.7s, norm=0.1s
+  ✓ Saved 13 files
+
+[37/45] Generating dataset 36: d=8, D=300, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=8, D=300, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.61s
+    ✓ GP setup (inversions): 0.64s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=49.82s, total=49.85s
+      Group 1: cov=0.02s, sample=49.57s, total=51.20s
+      Group 2: cov=0.02s, sample=68.53s, total=71.84s
+      Group 3: cov=0.02s, sample=51.72s, total=56.97s
+      Group 4: cov=0.02s, sample=50.37s, total=56.72s
+      Group 5: cov=0.02s, sample=50.84s, total=58.90s
+      Group 6: cov=0.02s, sample=48.75s, total=58.47s
+      Group 7: cov=0.02s, sample=49.46s, total=60.65s
+      Group 8: cov=0.02s, sample=49.26s, total=62.06s
+      Group 9: cov=0.02s, sample=49.00s, total=63.60s
+      Group 10: cov=0.02s, sample=51.14s, total=69.17s
+      Group 11: cov=0.02s, sample=48.97s, total=67.03s
+      Group 12: cov=0.02s, sample=49.01s, total=68.11s
+      Group 13: cov=0.02s, sample=49.00s, total=69.47s
+      Group 14: cov=0.02s, sample=50.57s, total=72.98s
+      Group 15: cov=0.02s, sample=50.56s, total=75.08s
+      Group 16: cov=0.02s, sample=50.03s, total=75.79s
+      Group 17: cov=0.02s, sample=48.80s, total=75.62s
+      Group 18: cov=0.02s, sample=48.86s, total=77.25s
+      Group 19: cov=0.02s, sample=48.25s, total=78.27s
+  ✓ Manifold generation completed in 1416.76s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1416.80s
+  ✓ Centralized (mean norm: 0.053517)
+  ✓ Rescaled (diameter: 38.6341 → 2.0000, factor: 19.3171)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.18s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 36 completed in 1417.06s
+      Breakdown: manifold=1416.8s, norm=0.1s
+  ✓ Saved 13 files
+
+[38/45] Generating dataset 37: d=8, D=300, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=8, D=300, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.80s
+    ✓ GP setup (inversions): 0.62s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=49.42s, total=49.44s
+      Group 1: cov=0.02s, sample=51.56s, total=53.15s
+      Group 2: cov=0.02s, sample=51.32s, total=54.52s
+      Group 3: cov=0.02s, sample=52.11s, total=57.07s
+      Group 4: cov=0.02s, sample=52.84s, total=59.59s
+      Group 5: cov=0.02s, sample=58.63s, total=67.02s
+      Group 6: cov=0.02s, sample=59.20s, total=69.12s
+      Group 7: cov=0.02s, sample=58.89s, total=70.20s
+      Group 8: cov=0.02s, sample=56.51s, total=69.78s
+      Group 9: cov=0.02s, sample=52.39s, total=66.61s
+      Group 10: cov=0.02s, sample=52.03s, total=68.38s
+      Group 11: cov=0.02s, sample=53.40s, total=71.01s
+      Group 12: cov=0.02s, sample=53.17s, total=72.37s
+      Group 13: cov=0.02s, sample=52.73s, total=73.95s
+      Group 14: cov=0.02s, sample=52.49s, total=75.54s
+      Group 15: cov=0.02s, sample=55.49s, total=80.49s
+      Group 16: cov=0.02s, sample=58.21s, total=84.17s
+      Group 17: cov=0.02s, sample=54.09s, total=84.72s
+      Group 18: cov=0.02s, sample=51.68s, total=80.41s
+      Group 19: cov=0.02s, sample=54.30s, total=84.77s
+  ✓ Manifold generation completed in 1490.20s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1490.24s
+  ✓ Centralized (mean norm: 11.463701)
+  ✓ Rescaled (diameter: 30.7671 → 2.0000, factor: 15.3836)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.21s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 37 completed in 1490.54s
+      Breakdown: manifold=1490.2s, norm=0.1s
+  ✓ Saved 13 files
+
+[39/45] Generating dataset 38: d=8, D=300, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=8, D=300, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 98.09s
+    ✓ GP setup (inversions): 0.62s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=41.02s, total=41.04s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=50.72s, total=52.31s
+      Group 2: cov=0.02s, sample=50.82s, total=54.00s
+      Group 3: cov=0.02s, sample=50.50s, total=55.36s
+      Group 4: cov=0.02s, sample=50.69s, total=56.93s
+      Group 5: cov=0.02s, sample=52.15s, total=60.07s
+      Group 6: cov=0.02s, sample=52.29s, total=61.89s
+      Group 7: cov=0.02s, sample=52.62s, total=64.01s
+      Group 8: cov=0.02s, sample=53.02s, total=66.25s
+      Group 9: cov=0.02s, sample=53.06s, total=68.14s
+      Group 10: cov=0.02s, sample=52.99s, total=69.57s
+      Group 11: cov=0.02s, sample=51.97s, total=70.22s
+      Group 12: cov=0.02s, sample=51.11s, total=70.77s
+      Group 13: cov=0.02s, sample=51.27s, total=72.27s
+      Group 14: cov=0.02s, sample=50.09s, total=72.43s
+      Group 15: cov=0.02s, sample=50.49s, total=74.05s
+      Group 16: cov=0.02s, sample=50.71s, total=77.64s
+      Group 17: cov=0.02s, sample=52.03s, total=80.34s
+      Group 18: cov=0.02s, sample=50.86s, total=80.71s
+      Group 19: cov=0.02s, sample=49.90s, total=80.66s
+  ✓ Manifold generation completed in 1427.85s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1427.88s
+  ✓ Centralized (mean norm: 16.938914)
+  ✓ Rescaled (diameter: 3.7386 → 2.0000, factor: 1.8693)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.18s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 38 completed in 1428.15s
+      Breakdown: manifold=1427.9s, norm=0.1s
+  ✓ Saved 13 files
+
+[40/45] Generating dataset 39: d=8, D=300, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=8, D=300, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.37s
+    ✓ GP setup (inversions): 0.57s
+    Starting GP generation for 20 groups × 300 functions...
+      Group 0: cov=0.02s, sample=34.99s, total=35.01s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=53.33s, total=54.92s
+      Group 2: cov=0.02s, sample=51.42s, total=54.64s
+      Group 3: cov=0.02s, sample=51.62s, total=56.34s
+      Group 4: cov=0.02s, sample=55.88s, total=62.17s
+      Group 5: cov=0.02s, sample=59.51s, total=68.43s
+      Group 6: cov=0.02s, sample=59.02s, total=69.71s
+      Group 7: cov=0.02s, sample=56.12s, total=68.60s
+      Group 8: cov=0.02s, sample=54.25s, total=67.04s
+      Group 9: cov=0.02s, sample=52.20s, total=66.61s
+      Group 10: cov=0.02s, sample=51.11s, total=66.66s
+      Group 11: cov=0.02s, sample=53.76s, total=71.67s
+      Group 12: cov=0.02s, sample=53.03s, total=71.99s
+      Group 13: cov=0.02s, sample=52.84s, total=73.47s
+      Group 14: cov=0.02s, sample=52.79s, total=75.33s
+      Group 15: cov=0.02s, sample=53.07s, total=76.81s
+      Group 16: cov=0.02s, sample=52.80s, total=78.34s
+      Group 17: cov=0.02s, sample=51.69s, total=79.38s
+      Group 18: cov=0.02s, sample=52.08s, total=81.63s
+      Group 19: cov=0.02s, sample=52.16s, total=82.34s
+  ✓ Manifold generation completed in 1458.53s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 300)
+  ✓ Raw generation: (20000, 300) in 1458.56s
+  ✓ Centralized (mean norm: 16.869677)
+  ✓ Rescaled (diameter: 0.3846 → 2.0000, factor: 0.1923)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 300) in 0.18s
+  ✓ Train/test split: (16000, 300)/(4000, 300) in 0.04s
+  ✓ Dataset 39 completed in 1458.82s
+      Breakdown: manifold=1458.6s, norm=0.1s
+  ✓ Saved 13 files
+
+[41/45] Generating dataset 40: d=8, D=1000, k=20, N=1000, σ=0.01
+    Generating manifold: k=20, N=1000, d=8, D=1000, σ=0.01, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.97s
+    ✓ GP setup (inversions): 0.64s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=152.05s, total=152.07s
+      Group 1: cov=0.02s, sample=146.16s, total=151.37s
+      Group 2: cov=0.02s, sample=147.76s, total=158.70s
+      Group 3: cov=0.02s, sample=146.22s, total=162.38s
+      Group 4: cov=0.02s, sample=132.56s, total=153.21s
+      Group 5: cov=0.02s, sample=142.22s, total=167.87s
+      Group 6: cov=0.02s, sample=142.35s, total=175.42s
+      Group 7: cov=0.02s, sample=131.80s, total=169.35s
+      Group 8: cov=0.02s, sample=141.12s, total=182.76s
+      Group 9: cov=0.02s, sample=136.92s, total=184.90s
+      Group 10: cov=0.02s, sample=140.09s, total=191.65s
+      Group 11: cov=0.02s, sample=135.72s, total=191.81s
+      Group 12: cov=0.02s, sample=146.18s, total=207.70s
+      Group 13: cov=0.02s, sample=142.49s, total=209.24s
+      Group 14: cov=0.02s, sample=137.95s, total=211.00s
+      Group 15: cov=0.02s, sample=152.33s, total=232.86s
+      Group 16: cov=0.02s, sample=151.43s, total=234.03s
+      Group 17: cov=0.02s, sample=137.34s, total=230.02s
+      Group 18: cov=0.02s, sample=131.59s, total=226.21s
+      Group 19: cov=0.02s, sample=147.05s, total=246.84s
+  ✓ Manifold generation completed in 3937.54s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 3937.63s
+  ✓ Centralized (mean norm: 0.095392)
+  ✓ Rescaled (diameter: 67.6595 → 2.0000, factor: 33.8298)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.48s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 40 completed in 3938.47s
+      Breakdown: manifold=3937.6s, norm=0.4s
+  ✓ Saved 13 files
+
+[42/45] Generating dataset 41: d=8, D=1000, k=20, N=1000, σ=0.1
+    Generating manifold: k=20, N=1000, d=8, D=1000, σ=0.1, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.75s
+    ✓ GP setup (inversions): 0.68s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=184.48s, total=184.50s
+      Group 1: cov=0.02s, sample=167.98s, total=173.39s
+      Group 2: cov=0.02s, sample=170.33s, total=181.42s
+      Group 3: cov=0.02s, sample=172.15s, total=188.76s
+      Group 4: cov=0.02s, sample=166.85s, total=188.72s
+      Group 5: cov=0.02s, sample=168.77s, total=194.85s
+      Group 6: cov=0.02s, sample=169.01s, total=203.01s
+      Group 7: cov=0.02s, sample=180.07s, total=221.99s
+      Group 8: cov=0.02s, sample=169.76s, total=216.93s
+      Group 9: cov=0.02s, sample=164.22s, total=214.82s
+      Group 10: cov=0.02s, sample=166.42s, total=222.97s
+      Group 11: cov=0.02s, sample=170.66s, total=232.22s
+      Group 12: cov=0.02s, sample=167.00s, total=231.16s
+      Group 13: cov=0.02s, sample=169.16s, total=239.76s
+      Group 14: cov=0.02s, sample=167.29s, total=242.61s
+      Group 15: cov=0.02s, sample=167.40s, total=249.57s
+      Group 16: cov=0.02s, sample=167.33s, total=256.05s
+      Group 17: cov=0.02s, sample=175.87s, total=278.20s
+      Group 18: cov=0.02s, sample=181.69s, total=289.91s
+      Group 19: cov=0.02s, sample=165.66s, total=271.38s
+  ✓ Manifold generation completed in 4580.20s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4580.30s
+  ✓ Centralized (mean norm: 0.093768)
+  ✓ Rescaled (diameter: 67.0948 → 2.0000, factor: 33.5474)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.49s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 41 completed in 4581.16s
+      Breakdown: manifold=4580.3s, norm=0.4s
+  ✓ Saved 13 files
+
+[43/45] Generating dataset 42: d=8, D=1000, k=20, N=1000, σ=1.0
+    Generating manifold: k=20, N=1000, d=8, D=1000, σ=1.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 96.68s
+    ✓ GP setup (inversions): 0.66s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=161.53s, total=161.55s
+      Group 1: cov=0.02s, sample=166.78s, total=171.97s
+      Group 2: cov=0.02s, sample=176.07s, total=186.72s
+      Group 3: cov=0.02s, sample=174.60s, total=191.06s
+      Group 4: cov=0.02s, sample=173.99s, total=194.81s
+      Group 5: cov=0.02s, sample=179.59s, total=206.44s
+      Group 6: cov=0.02s, sample=182.06s, total=214.51s
+      Group 7: cov=0.02s, sample=189.07s, total=226.98s
+      Group 8: cov=0.02s, sample=194.86s, total=240.74s
+      Group 9: cov=0.02s, sample=186.23s, total=238.20s
+      Group 10: cov=0.02s, sample=180.54s, total=234.18s
+      Group 11: cov=0.02s, sample=174.05s, total=233.31s
+      Group 12: cov=0.02s, sample=174.50s, total=238.98s
+      Group 13: cov=0.02s, sample=178.68s, total=247.12s
+      Group 14: cov=0.02s, sample=200.79s, total=278.67s
+      Group 15: cov=0.02s, sample=192.96s, total=273.44s
+      Group 16: cov=0.02s, sample=182.06s, total=266.29s
+      Group 17: cov=0.02s, sample=197.79s, total=290.70s
+      Group 18: cov=0.02s, sample=184.73s, total=290.56s
+      Group 19: cov=0.02s, sample=179.59s, total=290.19s
+  ✓ Manifold generation completed in 4774.30s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4774.42s
+  ✓ Centralized (mean norm: 21.313062)
+  ✓ Rescaled (diameter: 52.7988 → 2.0000, factor: 26.3994)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.48s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 42 completed in 4775.27s
+      Breakdown: manifold=4774.4s, norm=0.4s
+  ✓ Saved 13 files
+
+[44/45] Generating dataset 43: d=8, D=1000, k=20, N=1000, σ=10.0
+    Generating manifold: k=20, N=1000, d=8, D=1000, σ=10.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 97.47s
+    ✓ GP setup (inversions): 0.66s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=140.30s, total=140.32s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=187.60s, total=192.98s
+      Group 2: cov=0.02s, sample=188.44s, total=199.48s
+      Group 3: cov=0.02s, sample=187.00s, total=203.45s
+      Group 4: cov=0.02s, sample=189.42s, total=211.27s
+      Group 5: cov=0.02s, sample=182.39s, total=208.53s
+      Group 6: cov=0.02s, sample=182.81s, total=213.95s
+      Group 7: cov=0.02s, sample=184.55s, total=221.76s
+      Group 8: cov=0.02s, sample=189.67s, total=232.22s
+      Group 9: cov=0.02s, sample=193.24s, total=244.42s
+      Group 10: cov=0.02s, sample=200.57s, total=258.25s
+      Group 11: cov=0.02s, sample=179.40s, total=237.90s
+      Group 12: cov=0.02s, sample=184.02s, total=246.47s
+      Group 13: cov=0.02s, sample=182.69s, total=252.44s
+      Group 14: cov=0.02s, sample=187.16s, total=262.00s
+      Group 15: cov=0.02s, sample=188.46s, total=267.46s
+      Group 16: cov=0.02s, sample=186.88s, total=270.60s
+      Group 17: cov=0.02s, sample=182.84s, total=274.46s
+      Group 18: cov=0.02s, sample=192.96s, total=286.29s
+      Group 19: cov=0.02s, sample=196.00s, total=307.41s
+  ✓ Manifold generation completed in 4830.34s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4830.48s
+  ✓ Centralized (mean norm: 31.532730)
+  ✓ Rescaled (diameter: 6.7498 → 2.0000, factor: 3.3749)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.48s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.10s
+  ✓ Dataset 43 completed in 4831.34s
+      Breakdown: manifold=4830.5s, norm=0.4s
+  ✓ Saved 13 files
+
+[45/45] Generating dataset 44: d=8, D=1000, k=20, N=1000, σ=100.0
+    Generating manifold: k=20, N=1000, d=8, D=1000, σ=100.0, base=unit_ball
+    ✓ Intrinsic coordinates: 0.01s
+  Generated 20 groups of intrinsic coordinates
+    ✓ Kernel matrices (20x20): 98.06s
+    ✓ GP setup (inversions): 0.75s
+    Starting GP generation for 20 groups × 1000 functions...
+      Group 0: cov=0.02s, sample=130.33s, total=130.35s
+/home/tim/python_projects/nn_manifold_denoising/scripts/../src/data_generation/manifold_generator.py:185: RuntimeWarning: covariance is not symmetric positive-semidefinite.
+  function_vals[i][dim_id] = np.random.multivariate_normal(Sigmas_i @ mus[i][dim_id], Sigmas_i)
+      Group 1: cov=0.02s, sample=175.10s, total=181.01s
+      Group 2: cov=0.02s, sample=172.40s, total=183.21s
+      Group 3: cov=0.02s, sample=171.95s, total=188.49s
+      Group 4: cov=0.02s, sample=171.83s, total=192.84s
+      Group 5: cov=0.02s, sample=174.94s, total=201.10s
+      Group 6: cov=0.02s, sample=175.20s, total=206.33s
+      Group 7: cov=0.02s, sample=173.11s, total=209.84s
+      Group 8: cov=0.02s, sample=171.48s, total=212.88s
+      Group 9: cov=0.02s, sample=168.66s, total=215.17s
+      Group 10: cov=0.02s, sample=180.19s, total=234.05s
+      Group 11: cov=0.02s, sample=191.28s, total=255.03s
+      Group 12: cov=0.02s, sample=185.87s, total=254.35s
+      Group 13: cov=0.02s, sample=176.81s, total=254.66s
+      Group 14: cov=0.02s, sample=174.05s, total=249.47s
+      Group 15: cov=0.02s, sample=173.45s, total=252.25s
+      Group 16: cov=0.02s, sample=170.60s, total=253.50s
+      Group 17: cov=0.02s, sample=172.40s, total=262.57s
+      Group 18: cov=0.02s, sample=177.73s, total=271.58s
+      Group 19: cov=0.02s, sample=175.95s, total=274.02s
+  ✓ Manifold generation completed in 4582.22s
+  Final shapes: intrinsic (20000, 8), embedded (20000, 1000)
+  ✓ Raw generation: (20000, 1000) in 4582.35s
+  ✓ Centralized (mean norm: 30.535801)
+  ✓ Rescaled (diameter: 0.6789 → 2.0000, factor: 0.3394)
+  ✓ Applied random rotation (determinant: 1.000000)
+  ✓ Added noise (σ=0.01): (20000, 1000) in 0.80s
+  ✓ Train/test split: (16000, 1000)/(4000, 1000) in 0.13s
+  ✓ Dataset 44 completed in 4583.58s
+      Breakdown: manifold=4582.3s, norm=0.4s
+  ✓ Saved 13 files
+============================================================
+Generation Summary:
+  Total time: 166573.98s (2776.23m)
+  Successful: 45/45
+  Failed: 0/45
+  Average per dataset: 3701.64s
+  Results saved to: data/data_250914_0100
+
+======================================================================
+STEP 1 COMPLETE: Dataset Generation
+======================================================================
+✅ Successfully generated 45/45 datasets
+📁 Location: data/data_250914_0100
+⏱️  Total time: 166573.98s (2776.23m)
+
+Example dataset (dataset 0):
+  Parameters: d=2, D=100, k=20, N=1000, σ=0.01
+  Clean shape: (20000, 100)
+  Noisy shape: (20000, 100)
+  Train/test: (16000, 100)/(4000, 100)
+
+🎉 Step 1 complete! Ready for Step 2: Geometric Analysis
+Next: python step2_geometric_analysis.py --experiment-id data_250914_0100

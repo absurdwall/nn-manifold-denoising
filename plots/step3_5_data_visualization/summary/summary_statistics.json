@@ -1,0 +1,40 @@
+{
+  "total_datasets": 1,
+  "dataset_info": [
+    {
+      "dataset": "dataset0",
+      "k": 20,
+      "N": 1000,
+      "D": 100,
+      "d": 2,
+      "kernel_smoothness": 0.01,
+      "base_type": "unit_ball",
+      "data_shape": "(20000, 100)"
+    }
+  ],
+  "parameter_ranges": {
+    "k": [
+      20,
+      20
+    ],
+    "N": [
+      1000,
+      1000
+    ],
+    "D": [
+      100,
+      100
+    ],
+    "d": [
+      2,
+      2
+    ],
+    "kernel_smoothness": [
+      0.01,
+      0.01
+    ]
+  },
+  "base_types": [
+    "unit_ball"
+  ]
+}

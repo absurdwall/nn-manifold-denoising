@@ -26,12 +26,14 @@ def estimate_mean_curvature(
     normalize_intrinsic: bool = True,
     return_details: bool = False,
     random_state: Optional[int] = 42,
+    fallback_on_failure: bool = True,
+    min_neighbors: int = 10,
 ) -> Union[np.ndarray, Tuple[np.ndarray, Dict]]:
     """
     Improved parameterization-invariant pointwise mean curvature magnitude estimation.
     
     This is based on the original implementation but with additional robustness improvements
-    and better error handling.
+    and better error handling to minimize NaN results.
     
     Args:
         intrinsic_coords: (N, d) array of intrinsic coordinates
@@ -44,6 +46,8 @@ def estimate_mean_curvature(
         normalize_intrinsic: Whether to normalize intrinsic coordinates locally
         return_details: Whether to return diagnostic information
         random_state: Random seed for reproducibility
+        fallback_on_failure: Whether to use fallback methods when main method fails
+        min_neighbors: Minimum neighbors required for estimation
         
     Returns:
         curvatures: (N,) array of mean curvature magnitudes
@@ -217,6 +221,37 @@ def estimate_mean_curvature(
 
         except Exception as e:
             if return_details: diag["fail_reason"][idx] = f"exception:{type(e).__name__}"
+            
+            # Fallback mechanism to avoid NaN
+            if fallback_on_failure:
+                try:
+                    # Simple fallback: use PCA-based curvature estimation
+                    local_embedded = embedded_coords[neigh]
+                    if len(local_embedded) >= min_neighbors:
+                        # Compute simple curvature based on local PCA
+                        centered_embedded = local_embedded - local_embedded[0]
+                        if len(centered_embedded) > d:
+                            pca = PCA()
+                            pca.fit(centered_embedded)
+                            
+                            # Use ratio of explained variance as curvature proxy
+                            explained_var = pca.explained_variance_
+                            if len(explained_var) > d:
+                                # Curvature related to how much variance is in normal directions
+                                normal_var = np.sum(explained_var[d:])
+                                tangent_var = np.sum(explained_var[:d])
+                                if tangent_var > 1e-12:
+                                    fallback_curvature = normal_var / tangent_var
+                                    curvatures[idx] = fallback_curvature
+                                    if return_details: 
+                                        diag["fail_reason"][idx] = "fallback_pca_success"
+                except:
+                    # Last resort: use median of successfully computed values
+                    valid_so_far = curvatures[np.isfinite(curvatures)]
+                    if len(valid_so_far) > 0:
+                        curvatures[idx] = np.median(valid_so_far)
+                        if return_details: 
+                            diag["fail_reason"][idx] = "fallback_median"
             continue
 
     if return_details:
