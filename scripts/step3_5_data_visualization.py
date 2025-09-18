@@ -382,10 +382,15 @@ def create_mesh_visualization(
     dataset_name: str,
     data_type: str,
     logger: logging.Logger,
+    n_combinations: int = 10,
     max_mesh_k: int = 3,
-    max_mesh_n: int = 200
+    max_mesh_n: int = 200,
+    save_ply: bool = False
 ) -> None:
-    """Create mesh visualization using Open3D with proper surface reconstruction."""
+    """Create mesh visualization using Open3D with proper surface reconstruction.
+    
+    Generates meshes for multiple coordinate combinations, similar to point cloud plots.
+    """
     
     if not OPEN3D_AVAILABLE:
         logger.warning("Open3D not available, skipping mesh generation")
@@ -394,6 +399,7 @@ def create_mesh_visualization(
     properties = metadata['properties']
     k = properties['k']
     N = properties['N']
+    D = properties['D']
     
     # Apply limits for mesh generation (meshes need fewer points for good results)
     mesh_k = min(k, max_mesh_k)
@@ -401,10 +407,44 @@ def create_mesh_visualization(
     
     logger.info(f"Creating mesh visualization for {dataset_name} ({data_type})")
     logger.info(f"  Using {mesh_k}/{k} batches, {mesh_n}/{N} samples/batch for mesh generation")
+    logger.info(f"  Will generate meshes for {n_combinations} coordinate combinations")
     
     # Create directory for meshes
     mesh_dir = output_dir / "meshes" / dataset_name / data_type
     mesh_dir.mkdir(parents=True, exist_ok=True)
+    
+    # Generate the same dimension combinations as point clouds
+    if D >= 3:
+        # Generate combinations of 3 dimensions (same logic as point clouds)
+        combinations = []
+        
+        # First few dimensions
+        combinations.append((0, 1, 2))
+        
+        # Evenly spaced through the dimensions
+        if n_combinations > 1:
+            step = max(1, D // max(1, n_combinations - 2))
+            for i in range(1, min(n_combinations - 1, D - 2)):
+                dim1 = (i * step) % D
+                dim2 = ((i * step) + max(1, step // 2)) % D
+                dim3 = ((i * step) + step) % D
+                if len(set([dim1, dim2, dim3])) == 3:  # Ensure all different
+                    combinations.append((dim1, dim2, dim3))
+        
+        # Add last dimensions
+        if D > 3 and n_combinations > 1:
+            combinations.append((D-3, D-2, D-1))
+        
+        # Remove duplicates and limit to n_combinations
+        combinations = list(set(combinations))[:n_combinations]
+    else:
+        # If D < 3, pad with zeros or use available dimensions
+        if D == 1:
+            combinations = [(0, 0, 0)]
+        elif D == 2:
+            combinations = [(0, 1, 0)]
+        else:
+            combinations = [(0, 1, 2)]
     
     # Suppress Open3D warnings
     import contextlib
@@ -422,182 +462,191 @@ def create_mesh_visualization(
         finally:
             sys.stdout, sys.stderr = old_stdout, old_stderr
     
-    try:
-        # Sample data for mesh generation
-        colors = get_colorblind_friendly_colors(mesh_k)
-        rgb_colors = []
-        for color_hex in colors:
-            color_hex = color_hex.lstrip('#')
-            rgb = tuple(int(color_hex[i:i+2], 16) / 255.0 for i in (0, 2, 4))
-            rgb_colors.append(rgb)
+    # Sample data for mesh generation (same for all combinations)
+    colors = get_colorblind_friendly_colors(mesh_k)
+    rgb_colors = []
+    for color_hex in colors:
+        color_hex = color_hex.lstrip('#')
+        rgb = tuple(int(color_hex[i:i+2], 16) / 255.0 for i in (0, 2, 4))
+        rgb_colors.append(rgb)
+    
+    # Sample data for mesh
+    mesh_data = []
+    point_colors = []
+    
+    for batch_idx in range(mesh_k):
+        start_idx = batch_idx * N
+        end_idx = (batch_idx + 1) * N
+        batch_data = data[start_idx:end_idx]
         
-        # Sample data for mesh
-        mesh_data = []
-        point_colors = []
+        # Sample points from this batch
+        if mesh_n < N:
+            sample_indices = np.random.choice(N, mesh_n, replace=False)
+            batch_sample = batch_data[sample_indices]
+        else:
+            batch_sample = batch_data[:mesh_n]
         
-        for batch_idx in range(mesh_k):
-            start_idx = batch_idx * N
-            end_idx = (batch_idx + 1) * N
-            batch_data = data[start_idx:end_idx]
-            
-            # Sample points from this batch
-            if mesh_n < N:
-                sample_indices = np.random.choice(N, mesh_n, replace=False)
-                batch_sample = batch_data[sample_indices]
-            else:
-                batch_sample = batch_data[:mesh_n]
-            
-            mesh_data.append(batch_sample)
-            # Assign color to all points in this batch
-            point_colors.extend([rgb_colors[batch_idx]] * len(batch_sample))
+        mesh_data.append(batch_sample)
+        # Assign color to all points in this batch
+        point_colors.extend([rgb_colors[batch_idx]] * len(batch_sample))
+    
+    mesh_data = np.vstack(mesh_data)
+    logger.info(f"  Mesh data shape: {mesh_data.shape}")
+    
+    # Generate meshes for each coordinate combination
+    for combo_idx, (dim1, dim2, dim3) in enumerate(combinations):
+        logger.info(f"  Generating meshes for combination {combo_idx+1}/{len(combinations)}: dims ({dim1},{dim2},{dim3})")
         
-        mesh_data = np.vstack(mesh_data)
-        logger.info(f"  Mesh data shape: {mesh_data.shape}")
-        
-        # Use first 3 dimensions for 3D coordinates
-        points_3d = mesh_data[:, :3] if mesh_data.shape[1] >= 3 else np.column_stack([
-            mesh_data[:, 0] if mesh_data.shape[1] > 0 else np.zeros(mesh_data.shape[0]),
-            mesh_data[:, 1] if mesh_data.shape[1] > 1 else np.zeros(mesh_data.shape[0]),
-            mesh_data[:, 2] if mesh_data.shape[1] > 2 else np.zeros(mesh_data.shape[0])
+        # Extract 3D coordinates for this combination
+        points_3d = np.column_stack([
+            mesh_data[:, dim1] if dim1 < mesh_data.shape[1] else np.zeros(mesh_data.shape[0]),
+            mesh_data[:, dim2] if dim2 < mesh_data.shape[1] else np.zeros(mesh_data.shape[0]),
+            mesh_data[:, dim3] if dim3 < mesh_data.shape[1] else np.zeros(mesh_data.shape[0])
         ])
         
-        # Create point cloud
-        with suppress_stdout_stderr():
-            pcd = o3d.geometry.PointCloud()
-            pcd.points = o3d.utility.Vector3dVector(points_3d)
-            pcd.colors = o3d.utility.Vector3dVector(point_colors)
+        try:
+            # Create point cloud for this coordinate combination
+            with suppress_stdout_stderr():
+                pcd = o3d.geometry.PointCloud()
+                pcd.points = o3d.utility.Vector3dVector(points_3d)
+                pcd.colors = o3d.utility.Vector3dVector(point_colors)
+                
+                # Optionally save point cloud PLY file
+                if save_ply:
+                    pcd_path = mesh_dir / f"pointcloud_{data_type}_dims_{dim1}_{dim2}_{dim3}.ply"
+                    o3d.io.write_point_cloud(str(pcd_path), pcd)
+                    file_size = pcd_path.stat().st_size / (1024 * 1024)
+                    logger.info(f"    ✓ Saved point cloud PLY: {pcd_path.name} ({file_size:.1f} MB)")
             
-            # Save point cloud
-            pcd_path = mesh_dir / f"pointcloud_{data_type}.ply"
-            o3d.io.write_point_cloud(str(pcd_path), pcd)
-            logger.info(f"    ✓ Saved point cloud: {pcd_path}")
+            # Create connected surface meshes with different methods
+            mesh_methods = [
+                ("poisson", "Poisson Surface Reconstruction"),
+                ("ball_pivoting", "Ball Pivoting Algorithm"), 
+                ("convex_hull", "Convex Hull"),
+                ("delaunay", "Delaunay Triangulation")
+            ]
+            
+            for method_name, method_title in mesh_methods:
+                try:
+                    with suppress_stdout_stderr():
+                        if method_name == "poisson":
+                            # Poisson reconstruction - creates smooth connected surface
+                            pcd.estimate_normals()
+                            pcd.orient_normals_consistent_tangent_plane(100)
+                            
+                            mesh, _ = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(
+                                pcd, depth=6, width=0, scale=1.1, linear_fit=False
+                            )
+                            
+                        elif method_name == "ball_pivoting":
+                            # Ball pivoting - good for creating connected surfaces
+                            pcd.estimate_normals()
+                            
+                            distances = pcd.compute_nearest_neighbor_distance()
+                            avg_dist = np.mean(distances)
+                            radius = 1.5 * avg_dist
+                            
+                            mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_ball_pivoting(
+                                pcd, o3d.utility.DoubleVector([radius, radius * 2, radius * 4])
+                            )
+                            
+                        elif method_name == "convex_hull":
+                            # Convex hull - creates connected outer surface
+                            mesh, _ = pcd.compute_convex_hull()
+                            
+                        elif method_name == "delaunay":
+                            # Delaunay triangulation using alpha shapes with larger alpha
+                            mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_alpha_shape(
+                                pcd, alpha=0.5
+                            )
+                        
+                        # Clean up mesh and ensure connectivity
+                        mesh.remove_degenerate_triangles()
+                        mesh.remove_duplicated_triangles()
+                        mesh.remove_duplicated_vertices()
+                        mesh.remove_non_manifold_edges()
+                        
+                        # Add vertex colors based on proximity to original colored points
+                        if len(mesh.vertices) > 0 and len(mesh.triangles) > 0:
+                            # Smooth the mesh for better appearance
+                            mesh = mesh.filter_smooth_simple(number_of_iterations=1)
+                            mesh.compute_vertex_normals()
+                            
+                            # Get mesh stats
+                            n_vertices = len(mesh.vertices)
+                            n_triangles = len(mesh.triangles)
+                            
+                            logger.info(f"    ✓ {method_title}: {n_vertices} vertices, {n_triangles} triangles")
+                            
+                            # Create matplotlib visualization
+                            vertices = np.asarray(mesh.vertices)
+                            triangles = np.asarray(mesh.triangles)
+                            
+                            fig = plt.figure(figsize=(15, 10))
+                            
+                            # 3D mesh plot
+                            ax1 = fig.add_subplot(221, projection='3d')
+                            ax1.plot_trisurf(vertices[:, 0], vertices[:, 1], vertices[:, 2], 
+                                            triangles=triangles, alpha=0.7, cmap='viridis')
+                            ax1.set_xlabel(f'Dim {dim1}')
+                            ax1.set_ylabel(f'Dim {dim2}') 
+                            ax1.set_zlabel(f'Dim {dim3}')
+                            ax1.set_title(f'{method_title}\n{n_vertices} vertices, {n_triangles} triangles')
+                            
+                            # Wireframe view
+                            ax2 = fig.add_subplot(222, projection='3d')
+                            ax2.plot_trisurf(vertices[:, 0], vertices[:, 1], vertices[:, 2],
+                                            triangles=triangles, alpha=0.3, color='lightblue')
+                            for triangle in triangles[:min(500, len(triangles))]:  # Show subset of edges
+                                edge_points = vertices[triangle]
+                                for i in range(3):
+                                    start, end = edge_points[i], edge_points[(i+1)%3]
+                                    ax2.plot([start[0], end[0]], [start[1], end[1]], [start[2], end[2]], 
+                                            'b-', alpha=0.4, linewidth=0.5)
+                            ax2.set_title('Wireframe View')
+                            
+                            # 2D projections
+                            ax3 = fig.add_subplot(223)
+                            ax3.triplot(vertices[:, 0], vertices[:, 1], triangles, alpha=0.5)
+                            ax3.set_xlabel(f'Dim {dim1}')
+                            ax3.set_ylabel(f'Dim {dim2}')
+                            ax3.set_title('2D Projection (dims 1-2)')
+                            ax3.set_aspect('equal')
+                            
+                            ax4 = fig.add_subplot(224)
+                            ax4.triplot(vertices[:, 0], vertices[:, 2], triangles, alpha=0.5)
+                            ax4.set_xlabel(f'Dim {dim1}')
+                            ax4.set_ylabel(f'Dim {dim3}')
+                            ax4.set_title('2D Projection (dims 1-3)')
+                            ax4.set_aspect('equal')
+                            
+                            plt.suptitle(f'{dataset_name} - {data_type.title()} - {method_title}\nDimensions ({dim1}, {dim2}, {dim3})', fontsize=14)
+                            plt.tight_layout()
+                            
+                            # Save visualization with coordinate combination info
+                            vis_path = mesh_dir / f"mesh_{method_name}_{data_type}_dims_{dim1}_{dim2}_{dim3}_visualization.png"
+                            plt.savefig(vis_path, dpi=300, bbox_inches='tight')
+                            plt.close()
+                            
+                            logger.info(f"      ✓ Saved visualization: {vis_path.name}")
+                            
+                            # Optionally save mesh PLY file
+                            if save_ply:
+                                mesh_ply_path = mesh_dir / f"mesh_{method_name}_{data_type}_dims_{dim1}_{dim2}_{dim3}.ply"
+                                o3d.io.write_triangle_mesh(str(mesh_ply_path), mesh)
+                                ply_size = mesh_ply_path.stat().st_size / (1024 * 1024)
+                                logger.info(f"      ✓ Saved mesh PLY: {mesh_ply_path.name} ({ply_size:.1f} MB)")
+                            
+                        else:
+                            logger.warning(f"    ✗ {method_title} failed: empty mesh")
+                            
+                except Exception as e:
+                    logger.warning(f"    ✗ {method_title} failed: {str(e)}")
+                    continue
         
-        # Create connected surface meshes with different methods
-        mesh_methods = [
-            ("poisson", "Poisson Surface Reconstruction"),
-            ("ball_pivoting", "Ball Pivoting Algorithm"), 
-            ("convex_hull", "Convex Hull"),
-            ("delaunay", "Delaunay Triangulation")
-        ]
-        
-        for method_name, method_title in mesh_methods:
-            try:
-                with suppress_stdout_stderr():
-                    if method_name == "poisson":
-                        # Poisson reconstruction - creates smooth connected surface
-                        pcd.estimate_normals()
-                        pcd.orient_normals_consistent_tangent_plane(100)
-                        
-                        mesh, _ = o3d.geometry.TriangleMesh.create_from_point_cloud_poisson(
-                            pcd, depth=6, width=0, scale=1.1, linear_fit=False
-                        )
-                        
-                    elif method_name == "ball_pivoting":
-                        # Ball pivoting - good for creating connected surfaces
-                        pcd.estimate_normals()
-                        
-                        distances = pcd.compute_nearest_neighbor_distance()
-                        avg_dist = np.mean(distances)
-                        radius = 1.5 * avg_dist
-                        
-                        mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_ball_pivoting(
-                            pcd, o3d.utility.DoubleVector([radius, radius * 2, radius * 4])
-                        )
-                        
-                    elif method_name == "convex_hull":
-                        # Convex hull - creates connected outer surface
-                        mesh, _ = pcd.compute_convex_hull()
-                        
-                    elif method_name == "delaunay":
-                        # Delaunay triangulation using alpha shapes with larger alpha
-                        mesh = o3d.geometry.TriangleMesh.create_from_point_cloud_alpha_shape(
-                            pcd, alpha=0.5
-                        )
-                    
-                    # Clean up mesh and ensure connectivity
-                    mesh.remove_degenerate_triangles()
-                    mesh.remove_duplicated_triangles()
-                    mesh.remove_duplicated_vertices()
-                    mesh.remove_non_manifold_edges()
-                    
-                    # Add vertex colors based on proximity to original colored points
-                    if len(mesh.vertices) > 0 and len(mesh.triangles) > 0:
-                        # Smooth the mesh for better appearance
-                        mesh = mesh.filter_smooth_simple(number_of_iterations=1)
-                        mesh.compute_vertex_normals()
-                        
-                        # Save mesh
-                        mesh_path = mesh_dir / f"mesh_{method_name}_{data_type}.ply"
-                        o3d.io.write_triangle_mesh(str(mesh_path), mesh)
-                        
-                        # Get mesh stats
-                        n_vertices = len(mesh.vertices)
-                        n_triangles = len(mesh.triangles)
-                        file_size = mesh_path.stat().st_size / (1024 * 1024)
-                        
-                        logger.info(f"    ✓ {method_title}: {n_vertices} vertices, {n_triangles} triangles ({file_size:.1f} MB)")
-                        
-                        # Create matplotlib visualization
-                        vertices = np.asarray(mesh.vertices)
-                        triangles = np.asarray(mesh.triangles)
-                        
-                        fig = plt.figure(figsize=(15, 10))
-                        
-                        # 3D mesh plot
-                        ax1 = fig.add_subplot(221, projection='3d')
-                        ax1.plot_trisurf(vertices[:, 0], vertices[:, 1], vertices[:, 2], 
-                                        triangles=triangles, alpha=0.7, cmap='viridis')
-                        ax1.set_xlabel('X')
-                        ax1.set_ylabel('Y') 
-                        ax1.set_zlabel('Z')
-                        ax1.set_title(f'{method_title}\n{n_vertices} vertices, {n_triangles} triangles')
-                        
-                        # Wireframe view
-                        ax2 = fig.add_subplot(222, projection='3d')
-                        ax2.plot_trisurf(vertices[:, 0], vertices[:, 1], vertices[:, 2],
-                                        triangles=triangles, alpha=0.3, color='lightblue')
-                        for triangle in triangles[:min(500, len(triangles))]:  # Show subset of edges
-                            edge_points = vertices[triangle]
-                            for i in range(3):
-                                start, end = edge_points[i], edge_points[(i+1)%3]
-                                ax2.plot([start[0], end[0]], [start[1], end[1]], [start[2], end[2]], 
-                                        'b-', alpha=0.4, linewidth=0.5)
-                        ax2.set_title('Wireframe View')
-                        
-                        # 2D projections
-                        ax3 = fig.add_subplot(223)
-                        ax3.triplot(vertices[:, 0], vertices[:, 1], triangles, alpha=0.5)
-                        ax3.set_xlabel('X')
-                        ax3.set_ylabel('Y')
-                        ax3.set_title('XY Projection')
-                        ax3.set_aspect('equal')
-                        
-                        ax4 = fig.add_subplot(224)
-                        ax4.triplot(vertices[:, 0], vertices[:, 2], triangles, alpha=0.5)
-                        ax4.set_xlabel('X')
-                        ax4.set_ylabel('Z')
-                        ax4.set_title('XZ Projection')
-                        ax4.set_aspect('equal')
-                        
-                        plt.suptitle(f'{dataset_name} - {data_type.title()} - {method_title}', fontsize=14)
-                        plt.tight_layout()
-                        
-                        # Save visualization
-                        vis_path = mesh_dir / f"mesh_{method_name}_{data_type}_visualization.png"
-                        plt.savefig(vis_path, dpi=300, bbox_inches='tight')
-                        plt.close()
-                        
-                        logger.info(f"      ✓ Saved visualization: {vis_path.name}")
-                        
-                    else:
-                        logger.warning(f"    ✗ {method_title} failed: empty mesh")
-                        
-            except Exception as e:
-                logger.warning(f"    ✗ {method_title} failed: {str(e)}")
-                continue
-        
-    except Exception as e:
-        logger.error(f"Mesh visualization failed: {str(e)}")
+        except Exception as e:
+            logger.error(f"Mesh generation failed for combination dims ({dim1},{dim2},{dim3}): {str(e)}")
+            continue
 
 
 def save_visualization_metadata(
@@ -938,7 +987,8 @@ def main():
                         create_mesh_visualization(
                             data, intrinsic, metadata, args.output_dir,
                             dataset_name, data_type, logger,
-                            args.max_mesh_k, args.max_mesh_n
+                            args.n_combinations, args.max_mesh_k, args.max_mesh_n,
+                            save_ply=False  # Only save PNG plots, not PLY files for now
                         )
                 else:
                     logger.warning(f"  ✗ No {data_type} data found for {dataset_name}")
