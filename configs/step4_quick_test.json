@@ -1,0 +1,40 @@
+{
+  "description": "Quick test configuration for Step 4 training pipeline",
+  "experiment_name": "quick_test_training",
+  
+  "network_configs": {
+    "architectures": ["DeepFCNet"],
+    "widths": [64, 128],
+    "depths": [2, 4],
+    "activations": ["relu"],
+    "init_schemes": ["standard", "rezero"],
+    "norm_types": ["batch"],
+    "dropout_rates": [0.0]
+  },
+  
+  "training_configs": {
+    "max_epochs": 50,
+    "batch_sizes": [256],
+    "base_learning_rates": [0.001],
+    "optimizers": ["adam"],
+    "schedulers": ["fixed"],
+    "lr_scaling_rules": [null],
+    "weight_decay": 1e-5,
+    "early_stop_patience": 15,
+    "val_ratio": 0.2
+  },
+  
+  "experiment_settings": {
+    "random_seed": 42,
+    "device": "auto",
+    "verbose": true,
+    "save_checkpoints": false
+  },
+  
+  "output_settings": {
+    "results_dir": "results/step4_quick_test",
+    "plots_dir": "plots/step4_quick_test",
+    "save_individual_plots": true,
+    "create_summary_plots": true
+  }
+}

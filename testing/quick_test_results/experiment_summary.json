@@ -1,0 +1,326 @@
+[
+  {
+    "experiment_id": "dataset0_net0_train0",
+    "network_config": {
+      "network_type": "DeepFCNet",
+      "input_dim": 5,
+      "output_dim": 5,
+      "width": 64,
+      "depth": 2,
+      "activation": "relu",
+      "norm_type": "batch",
+      "dropout": 0.0,
+      "use_residual": true,
+      "init_scheme": "standard"
+    },
+    "training_config": {
+      "max_epochs": 30,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "optimizer_name": "adam",
+      "scheduler_mode": "fixed",
+      "scheduler_patience": 10,
+      "scheduler_factor": 0.1,
+      "scheduler_step_size": 50,
+      "weight_decay": 0.0,
+      "momentum": 0.9,
+      "early_stop_patience": 10,
+      "val_ratio": 0.2,
+      "gradient_clip": null,
+      "lr_scaling_rule": null
+    },
+    "metrics": {
+      "train_losses": [
+        2.3874747157096863,
+        0.5021764665842057,
+        0.1750117853283882,
+        0.1142764687538147,
+        0.057502706348896024,
+        0.04165609758347273,
+        0.030493813380599023,
+        0.026610424742102623,
+        0.022129191271960735,
+        0.02071656081825495
+      ],
+      "val_losses": [
+        0.8565473953882853,
+        1.5239590803782146,
+        2.0478334426879883,
+        0.1505638211965561,
+        0.5428822139898936,
+        0.10856820891300838,
+        0.07654608537753423,
+        0.12333223472038905,
+        0.06187911331653595,
+        0.038623095800479255
+      ],
+      "learning_rates": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ],
+      "epochs_completed": 10,
+      "best_val_loss": 0.038623095800479255,
+      "best_epoch": 10,
+      "training_time": 40.43137001991272
+    },
+    "test_loss": 0.12227004580199718,
+    "dataset_info": {
+      "D": 5,
+      "d": 2,
+      "n_samples": 1000,
+      "noise_level": 0.05,
+      "dataset_id": 0
+    }
+  },
+  {
+    "experiment_id": "dataset0_net1_train0",
+    "network_config": {
+      "network_type": "DeepFCNet",
+      "input_dim": 5,
+      "output_dim": 5,
+      "width": 64,
+      "depth": 4,
+      "activation": "relu",
+      "norm_type": "batch",
+      "dropout": 0.0,
+      "use_residual": true,
+      "init_scheme": "rezero"
+    },
+    "training_config": {
+      "max_epochs": 30,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "optimizer_name": "adam",
+      "scheduler_mode": "fixed",
+      "scheduler_patience": 10,
+      "scheduler_factor": 0.1,
+      "scheduler_step_size": 50,
+      "weight_decay": 0.0,
+      "momentum": 0.9,
+      "early_stop_patience": 10,
+      "val_ratio": 0.2,
+      "gradient_clip": null,
+      "lr_scaling_rule": null
+    },
+    "metrics": {
+      "train_losses": [
+        1.3359706103801727,
+        0.3488128736615181,
+        0.056895094364881514,
+        0.036757934279739855,
+        0.012033064756542445,
+        0.006486743362620473,
+        0.0036595732904970645,
+        0.0024531289935112,
+        0.0021410572808235884,
+        0.002062210696749389
+      ],
+      "val_losses": [
+        1.7489249308904011,
+        0.18179814020792642,
+        0.31589779257774353,
+        0.0782361129919688,
+        0.027877480412522953,
+        0.012465603649616241,
+        0.00496663386002183,
+        0.005488956191887458,
+        0.0017072768338645499,
+        0.0021189995653306446
+      ],
+      "learning_rates": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ],
+      "epochs_completed": 10,
+      "best_val_loss": 0.0017072768338645499,
+      "best_epoch": 9,
+      "training_time": 0.5552983283996582
+    },
+    "test_loss": 0.0067883210722357035,
+    "dataset_info": {
+      "D": 5,
+      "d": 2,
+      "n_samples": 1000,
+      "noise_level": 0.05,
+      "dataset_id": 0
+    }
+  },
+  {
+    "experiment_id": "dataset1_net0_train0",
+    "network_config": {
+      "network_type": "DeepFCNet",
+      "input_dim": 5,
+      "output_dim": 5,
+      "width": 64,
+      "depth": 2,
+      "activation": "relu",
+      "norm_type": "batch",
+      "dropout": 0.0,
+      "use_residual": true,
+      "init_scheme": "standard"
+    },
+    "training_config": {
+      "max_epochs": 30,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "optimizer_name": "adam",
+      "scheduler_mode": "fixed",
+      "scheduler_patience": 10,
+      "scheduler_factor": 0.1,
+      "scheduler_step_size": 50,
+      "weight_decay": 0.0,
+      "momentum": 0.9,
+      "early_stop_patience": 10,
+      "val_ratio": 0.2,
+      "gradient_clip": null,
+      "lr_scaling_rule": null
+    },
+    "metrics": {
+      "train_losses": [
+        2.650111126899719,
+        0.6190050095319748,
+        0.21789568662643433,
+        0.11616611033678055,
+        0.07557725347578526,
+        0.05702345296740532,
+        0.049474853277206424,
+        0.0464588388800621,
+        0.03743410613387823,
+        0.02985812071710825
+      ],
+      "val_losses": [
+        4.839841524759929,
+        1.933322548866272,
+        0.8971166412035624,
+        0.7231509983539581,
+        0.42878082394599915,
+        0.6594398220380148,
+        0.24259289105733237,
+        0.19601117571194968,
+        0.22279287377993265,
+        0.20080090562502542
+      ],
+      "learning_rates": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ],
+      "epochs_completed": 10,
+      "best_val_loss": 0.19601117571194968,
+      "best_epoch": 8,
+      "training_time": 0.34088754653930664
+    },
+    "test_loss": 0.5081810057163239,
+    "dataset_info": {
+      "D": 5,
+      "d": 2,
+      "n_samples": 1000,
+      "noise_level": 0.05,
+      "dataset_id": 1
+    }
+  },
+  {
+    "experiment_id": "dataset1_net1_train0",
+    "network_config": {
+      "network_type": "DeepFCNet",
+      "input_dim": 5,
+      "output_dim": 5,
+      "width": 64,
+      "depth": 4,
+      "activation": "relu",
+      "norm_type": "batch",
+      "dropout": 0.0,
+      "use_residual": true,
+      "init_scheme": "rezero"
+    },
+    "training_config": {
+      "max_epochs": 30,
+      "batch_size": 64,
+      "learning_rate": 0.001,
+      "optimizer_name": "adam",
+      "scheduler_mode": "fixed",
+      "scheduler_patience": 10,
+      "scheduler_factor": 0.1,
+      "scheduler_step_size": 50,
+      "weight_decay": 0.0,
+      "momentum": 0.9,
+      "early_stop_patience": 10,
+      "val_ratio": 0.2,
+      "gradient_clip": null,
+      "lr_scaling_rule": null
+    },
+    "metrics": {
+      "train_losses": [
+        3.72488272190094,
+        1.7037142276763917,
+        0.5317078322172165,
+        0.1342255175113678,
+        0.055412781238555905,
+        0.026296952180564402,
+        0.013107728492468596,
+        0.0073562153615057465,
+        0.005738694197498262,
+        0.0048114178935065866
+      ],
+      "val_losses": [
+        5.2653805414835615,
+        1.1396262645721436,
+        0.39753607908884686,
+        1.1091325084368389,
+        0.3425530393918355,
+        0.13031643877426782,
+        0.04621391867597898,
+        0.03230479390670856,
+        0.02452273853123188,
+        0.021410893959303696
+      ],
+      "learning_rates": [
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001,
+        0.001
+      ],
+      "epochs_completed": 10,
+      "best_val_loss": 0.021410893959303696,
+      "best_epoch": 10,
+      "training_time": 0.641350507736206
+    },
+    "test_loss": 0.09149631857872009,
+    "dataset_info": {
+      "D": 5,
+      "d": 2,
+      "n_samples": 1000,
+      "noise_level": 0.05,
+      "dataset_id": 1
+    }
+  }
+]

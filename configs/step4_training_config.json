@@ -1,0 +1,49 @@
+{
+  "description": "Configuration for Step 4: Neural Network Training Pipeline",
+  "experiment_name": "comprehensive_training_sweep",
+  
+  "network_configs": {
+    "architectures": ["DeepFCNet", "SimpleFCNet"],
+    "widths": [100, 200, 400, 800],
+    "depths": [1, 2, 4, 8, 16],
+    "activations": ["relu", "gelu"],
+    "init_schemes": ["standard", "rezero", "fixup"],
+    "norm_types": [null, "batch", "layer"],
+    "dropout_rates": [0.0, 0.1]
+  },
+  
+  "training_configs": {
+    "max_epochs": 2000,
+    "batch_sizes": [512, 1024],
+    "base_learning_rates": [0.01, 0.001, 0.0001],
+    "optimizers": ["adam", "adamw", "sgd"],
+    "schedulers": ["fixed", "plateau", "cosine"],
+    "lr_scaling_rules": [null, "1/L", "sqrt_L"],
+    "weight_decay": 1e-5,
+    "early_stop_patience": 50,
+    "val_ratio": 0.2
+  },
+  
+  "dataset_filters": {
+    "min_d": 1,
+    "max_d": 10,
+    "min_D": 10,
+    "max_D": 100,
+    "noise_levels": [0.0, 0.01, 0.05, 0.1]
+  },
+  
+  "experiment_settings": {
+    "random_seed": 42,
+    "device": "auto",
+    "verbose": true,
+    "save_checkpoints": false,
+    "plot_frequency": 100
+  },
+  
+  "output_settings": {
+    "results_dir": "results/step4_training",
+    "plots_dir": "plots/step4_training",
+    "save_individual_plots": true,
+    "create_summary_plots": true
+  }
+}

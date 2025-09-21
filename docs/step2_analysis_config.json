@@ -1,0 +1,12 @@
+{
+  "analysis_name": "step2_geometric_analysis",
+  "data_dir": "data/data_250914_0100",
+  "output_dir": "results/step2_data_250914_0100",
+  "curvature_methods": ["mean", "pca"],
+  "neighbor_strategies": ["k_nearest", "radius"],
+  "k_neighbors": [5, 10, 15, 20],
+  "radius_values": [0.1, 0.15, 0.2, 0.25],
+  "sample_sizes": [100, 500, 1000],
+  "random_seed": 42,
+  "dataset_indices": [0, 1, 2, 3, 4]
+}
