@@ -1,0 +1,40 @@
+{
+  "description": "Experiment 1: Single network configuration across all datasets in data_250914_0100",
+  "experiment_name": "exp1_single_net_all_datasets",
+  
+  "network_configs": {
+    "architectures": ["DeepFCNet"],
+    "widths": [400],
+    "depths": [2],
+    "activations": ["relu"],
+    "init_schemes": ["standard"],
+    "norm_types": [null],
+    "dropout_rates": [0.0]
+  },
+  
+  "training_configs": {
+    "max_epochs": 2000,
+    "batch_sizes": [512],
+    "base_learning_rates": [0.001],
+    "optimizers": ["adam"],
+    "schedulers": ["fixed"],
+    "lr_scaling_rules": [null],
+    "weight_decay": 0.0,
+    "early_stop_patience": 50,
+    "val_ratio": 0.2
+  },
+  
+  "experiment_settings": {
+    "random_seed": 42,
+    "device": "auto",
+    "verbose": true,
+    "save_checkpoints": false
+  },
+  
+  "output_settings": {
+    "results_dir": "results/nn_train_exp1_250914_0100",
+    "plots_dir": "plots/nn_train_exp1_250914_0100",
+    "save_individual_plots": true,
+    "create_summary_plots": true
+  }
+}

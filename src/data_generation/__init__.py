@@ -25,6 +25,11 @@ from .manifold_generator import (
     add_noise,
     rbf_kernel
 )
+from .dataset_utils import (
+    create_manifold_dataset,
+    create_simple_dataset,
+    get_dataset_info
+)
 
 __all__ = [
     'DatasetGenerator',
@@ -35,5 +40,8 @@ __all__ = [
     'generate_intrinsic_coordinates', 
     'apply_normalization',
     'add_noise',
-    'rbf_kernel'
+    'rbf_kernel',
+    'create_manifold_dataset',
+    'create_simple_dataset',
+    'get_dataset_info'
 ]
